@@ -1,0 +1,91 @@
+<section class="home">
+  <div class="home__wrapper">
+
+    <div class="header"></div>
+
+    <section class="tracks-section">
+      <div class="tracks-sections__container">
+        @for (track of tracks(); let index = $index; track index) {
+        <div class="track">
+          <div class="track__title">
+            {{ track.title }}
+          </div>
+
+          <div class="track__image-wrap">
+            <!--              <img src="./src/app/utils/images/papers/guts-2k.jpg" class="track__image" alt="" >-->
+          </div>
+
+          <div class="track__actions">
+            <button (click)="navigateToTrack(track)">play</button>
+          </div>
+
+        </div>
+
+        }
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- <div class="actions-wrapper">
+
+            <div class="thumbnail">
+                <img src="../../../../public/assets/thumbnails/thumbnail_ph.jpg" [alt]="">
+            </div>
+
+            <div class="track-loader">
+                <label class="track-loader__label" for="player">Scegli una traccia</label>
+                <input type="file" id="player" class="track-loader__input" (input)="getFileData($event)"
+                    accept="audio/mp3">
+                <audio #audioSource class="track-loader__audioSrc"></audio>
+
+                <div class="track-loader__action-btns-wrapper">
+                    <button class="track-loader__action-btn track-loader__play-btn" mat-icon-button
+                        (click)="  isTrackOnGoing() ? pauseTrack() : playTrack()">
+                        @if(isTrackOnGoing()) {
+                        <mat-icon>pause</mat-icon>
+                        } @else {
+                        <mat-icon>play_arrow</mat-icon>
+                        }
+                    </button>
+
+                    <div class="track-loader__volume-wrapper">
+                        <mat-icon>volume_up</mat-icon>
+                        <mat-slider [discrete]="true" [max]="100" [min]="0" [showTickMarks]="true">
+                            <input matSliderThumb [(value)]="this.trackVolume">
+                        </mat-slider>
+
+                    </div>
+
+                </div>
+            </div>
+            <mat-progress-bar [bufferValue]="bufferTotal()" [value]="currentBuffer()"></mat-progress-bar>
+        </div>
+
+        <div class="tracks">
+
+            <div class="tracks__tracks-wrapper">
+                @for (t of tracks(); track $index) {
+                <div class="tracks__track">
+                    <div class="tracks__title">{{t.title}}</div>
+                    <div class="tracks__play">
+                        <button mat-icon-button (click)="playBotTrack(audioSourceBot)">
+                            <mat-icon>play_arrow</mat-icon>
+                        </button>
+                        <audio #audioSourceBot [src]="t.path" class="track-loader__audioSrc"></audio>
+
+                    </div>
+                </div>
+                }
+            </div>
+        </div> -->
+
+<!-- <div class="button_upload">
+            <button mat-icon-button (click)="input.click()">
+                <mat-icon>upload</mat-icon>
+            </button>
+        </div>
+        <form enctype="multipart/form-data">
+            <input type="file" name="track" #input (input)="uploadTrack($event)" style="display: none;">
+
+        </form> -->
