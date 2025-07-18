@@ -1,79 +1,16 @@
-@use './app/styles/theme'; 
-
-/* You can add global styles to this file, and also import other style files */
-/*
-  1. Use a more-intuitive box-sizing model.
-*/
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-/*
-  2. Remove default margin
-*/
-* {
-  margin: 0;
-}
-/*
-  Typographic tweaks!
-  3. Add accessible line-height
-  4. Improve text rendering
-*/
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-/*
-  5. Improve media defaults
-*/
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
-/*
-  6. Remove built-in form typography styles
-*/
-input, button, textarea, select {
-  font: inherit;
-}
-/*
-  7. Avoid text overflows
-*/
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-
-c-home {
-  height: 100%;
-}
-
-.divider {
-  height: 0.5px;
-  width: 90%;
-  background-color: var(--divider);
-  align-self: center;
-  border-radius: 50%;
-}
+@use './app/styles/global-reset.scss';
+@use './app/styles/theme.scss';
 
 :root {
-  --dark-primary-color: #388E3C;
-  --primary-color: #4CAF50;
-  --light-primary-color: #C8E6C9;
-  --texts-icons: #FFFFFF;
-  --accent-color: #FF5252;
-  --primary-text: #212121;
-  --secondary-text: #757575;
-  --divider: #BDBDBD;
-
-}
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+    --input-background-color: #595959;
+    --input-border-radius: 16px;
+    --icon-search-color: #2b2b2b;
+    --icon-search-darker-color: #181818;
+    --padding-medium: 12px;
+    --header-background-color: #a71029c8;
 
 
-.glassy {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+    body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
 }

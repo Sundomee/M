@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './shared/components/header/header.component';
-import { Footer } from "./shared/components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Header, Footer],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  
+export class AppComponent implements OnInit {
+
+  ngOnInit() {
+    document.body.classList.add('dark-theme');
+  }
+
 }

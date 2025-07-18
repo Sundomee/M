@@ -1,0 +1,11 @@
+<div style="position: relative;">
+    <input class="dl-input" 
+    [style.width]="width() ? (width() + 'px') : 'unset'"
+    [class.width-animation]="widthAnimation()"
+    #element
+    >
+    
+    @if (icon()) {
+        <mat-icon class="icon">search</mat-icon>
+    }
+</div>

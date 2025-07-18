@@ -1,0 +1,49 @@
+div {
+
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    // Da togliere sopra
+}
+
+.dl-input {
+    // generale
+    background-color: var(--input-background-color);
+    padding: 2px 12px;
+
+    // bordo
+    border-radius: var(--input-border-radius);
+    border: none ;// 1px solid rgba(157, 157, 157, 0.505);
+    outline: none;
+
+    // &:focus {
+    //     border: 1px solid rgb(157, 157, 157, 0.8);
+    // }
+
+    box-shadow: rgba(86, 86, 87, 0.12) 0px 2px 4px 0px,
+    rgba(86, 86, 87, 0.32) 0px 2px 16px 0px;
+    color-scheme: dark;
+    transition: border 125ms;
+}
+
+.width-animation {
+    will-change: transfom;
+    transition: transform 125ms;
+
+    &:focus {
+        transform: scaleX(1.1);
+
+        &+mat-icon {
+            right: 0;
+            color: var(--icon-search-darker-color);
+
+        }
+    }
+}
+
+.icon {
+    transition: right 125ms, color 125ms;
+    position: absolute;
+    right: 12px;
+    color: var(--icon-search-color);
+}

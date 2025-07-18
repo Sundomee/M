@@ -9,10 +9,14 @@
     // background-color: ;
   }
 
-  &__head {
+  &__header {
     display: flex;
-    flex: 1 1 50%;
+    height: 104px;
     width: 100%;
+    background-color: var(--header-background-color);
+    padding: var(--padding-medium);
+    justify-content: center;
+    align-items: center;
   }
 
   .tracks-section {
@@ -37,9 +41,4 @@
     }
 
   }
-
-
 }
-
-
-
