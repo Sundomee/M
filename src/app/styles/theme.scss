@@ -1,24 +1,28 @@
 @use '@angular/material' as mat;
-@use '@angular/material-experimental' as matx;
 
 @include mat.core();
 
-$my-primary: matx.define-palette(mat.$red-palette, 700); // rosso scuro smorzato
-$my-secondary: matx.define-palette(mat.$grey-palette, 600); // sfumature neutre
-$my-tertiary: matx.define-palette(mat.$red-palette, 300); // rosso per accenti leggeri
+// Define a dark color palette
+$my-primary: mat.define-palette(mat.$red-palette, 700);   // red accents
+$my-accent: mat.define-palette(mat.$grey-palette, 600);   // secondary/neutral
+$my-warn: mat.define-palette(mat.$red-palette);           // default warn
 
-$my-dark-theme: matx.define-theme((
+// Create a dark theme using Material 3
+$my-dark-theme: mat.define-dark-theme((
   color: (
-    theme-type: dark,
     primary: $my-primary,
-    secondary: $my-secondary,
-    tertiary: $my-tertiary
-  ),
-  typography: (
-    brand-family: 'Roboto, sans-serif',
-  ),
-  density: -1 // più compatto e moderno
+    accent: $my-accent,
+    warn: $my-warn
+  )
 ));
 
-// Applica il tema all'intera app
+// Apply the theme to all Material components
 @include mat.all-component-themes($my-dark-theme);
+
+// Optional: set background/text color for body manually
+body {
+  background-color: mat.get-color-from-palette($my-primary, 900);
+  color: white;
+  font-family: Roboto, sans-serif;
+  margin: 0;
+}
