@@ -8,11 +8,13 @@ import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZonelessChangeDetection(), provideRouter(routes), provideAnimationsAsync(),
+    provideZonelessChangeDetection(), 
+    provideRouter(routes), 
+    provideAnimationsAsync(),
+    provideHttpClient(),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' }
     },
-    provideHttpClient()
   ]
 
 };
