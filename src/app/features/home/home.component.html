@@ -1,19 +1,7 @@
 <section class="home">
   <div class="home__wrapper">
 
-    <div class="home__header">
-      <div class="home__header--search">
-        <dl-input  
-          [width]="400"
-          [widthAnimation]="true"
-          [icon]="true"
-        />
-
-
-
-      </div>
-      <div class="home__header--sidebar"></div>
-    </div>
+    <dl-header (toggleSidenav)="sidenav_toggled.set(true)"/>
 
     <section class="tracks-section">
       <div class="tracks-sections__container">
@@ -38,6 +26,8 @@
     </section>
   </div>
 </section>
+
+  <dl-sidenav [sidenavToggled]="sidenav_toggled()" (backdropClick)="onBackdropClick()" [style.width]="!sidenav_toggled() ? '0' : '100%'"/>
 
 <!-- <div class="actions-wrapper">
 

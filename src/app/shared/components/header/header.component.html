@@ -1,14 +1,9 @@
-<header class="header">
-  <div class="header__background">
-    <div class="header__glass">
-      <div class="header__actions-left">
-        <button class="header__menu-btn" (click)="toggleMenu.emit()">
-          <svg class="header__menu-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </div>
+<div class="header">
+  <div class="header--search">
+    <dl-input [width]="400" [widthAnimation]="true" [icon]="true" [formControl]="search_controller" />
   </div>
-</header>
+  <div class="header--sidebar">
+    <!-- <mat-icon style="color: white;" (click)="sidenav_toggled.set(true)">menu</mat-icon> -->
+    <dl-user-badge (toggleSidenav)="toggleSidenav.emit()" />
+  </div>
+</div>

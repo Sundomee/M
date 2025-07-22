@@ -1,16 +1,20 @@
 import {Component, output} from "@angular/core";
-import {NgOptimizedImage} from "@angular/common";
+import { DlInputComponent } from "../input/input.component";
+import { UserBadgeComponent } from "../user-badge/user-badge.component";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'c-header',
+  selector: 'dl-header',
   standalone: true,
-  imports: [],
+  imports: [DlInputComponent, UserBadgeComponent, ReactiveFormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class Header {
+export class DlHeaderComponent {
 
   /* Evento apertura sidenav sinistra*/
-  public readonly toggleMenu = output()
+  public readonly toggleSidenav = output()
+
+  protected readonly search_controller = new FormControl<string>('')
 
 }

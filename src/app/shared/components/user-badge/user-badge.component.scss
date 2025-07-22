@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    user-select: none; 
+}
+
+.user {
+    display: flex;
+    gap: var(--user-badge-gap);
+    padding: var(--user-badge-padding);
+    color: white;
+
+    &__image {
+        width: var(--user-badge-size);
+        height: var(--user-badge-size);
+        border-radius: 50%;
+        background-color: white;
+    }
+
+    &__info {
+        &--email, &--name {
+            text-align: end;
+        }
+    }
+}

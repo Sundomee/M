@@ -1,0 +1,10 @@
+    <div class="sidenav__backdrop" (click)="backdropClick.emit()">
+        <div class="sidenav__container" (click)="$event.stopImmediatePropagation()"
+            [class.toggled]="sidenavToggled()"
+            [class.untoggled]="!sidenavToggled()"
+        >
+            <div class="sidenav__user-badge">
+                <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
+            </div>
+        </div>
+    </div>

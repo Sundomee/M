@@ -8,9 +8,9 @@ import { Track } from "../../shared/models/track-model";
 import { Router } from "@angular/router";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
-import { DlInputComponent } from "../../shared/components/input/input.component";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { DlControlDirective } from "../../shared/components/input/dl-control.directive";
+import { DlSidenavComponent } from "../../shared/components/sidenav/sidenav.component";
+import { DlHeaderComponent } from "../../shared/components/header/header.component";
 
 @Component({
   selector: 'c-home',
@@ -23,24 +23,22 @@ import { DlControlDirective } from "../../shared/components/input/dl-control.dir
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
-    DlInputComponent,
-    DlControlDirective,
+    DlSidenavComponent,
+    DlHeaderComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class Home implements OnInit {
 
-  public tracks: WritableSignal<Track[]> = signal([]);
-  private trackService: TrackService = inject(TrackService);
-  private router: Router = inject(Router);
+  public readonly sidenav_toggled = signal<boolean>(false)
+  
+  public readonly tracks: WritableSignal<Track[]> = signal([]);
+  private readonly trackService: TrackService = inject(TrackService);
+  private readonly router: Router = inject(Router);
 
-  protected readonly search_controller = new FormControl<string>('')
 
-  constructor() {
-
-    this.search_controller.valueChanges.subscribe((value) => console.log(value))
-  }
+  constructor() {}
 
   async ngOnInit(): Promise<void> {
 
@@ -50,9 +48,15 @@ export class Home implements OnInit {
     console.log(this.tracks());
   }
 
-
   navigateToTrack(track: Track) {
     this.router.navigateByUrl(`/listen/${track._id}`)
   }
 
+  toggleSidenav() {
+    this.sidenav_toggled.update(toggled => !toggled)
+  }
+
+  onBackdropClick() {
+    this.sidenav_toggled.set(false)
+  }
 }
