@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, input, viewChild } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatIcon } from "@angular/material/icon";
-import { DlControlBaseComponent } from "../dl-control-base.component.ts/dl-control-base.component";
+import { DlControlBaseComponent } from "../dl-control-base/dl-control-base.component";
 
 @Component({
     selector: 'dl-input',
