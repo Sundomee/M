@@ -17,6 +17,19 @@
     padding: var(--padding-medium);
     justify-content: center;
     align-items: center;
+
+    &--search {
+      margin: 0 auto;
+    }
+
+    &--sidebar {
+      display: flex;
+      flex-direction: column;
+
+      & > mat-icon {
+        align-self: flex-end;
+      }
+    }
   }
 
   .tracks-section {

@@ -2,12 +2,15 @@
 @use './app/styles/theme.scss';
 
 :root {
+    --application-main-color: #000000f7;
+    --lighter-application-main-color: #090909;
     --input-background-color: #595959;
     --input-border-radius: 16px;
     --icon-search-color: #2b2b2b;
     --icon-search-darker-color: #181818;
     --padding-medium: 12px;
     --header-background-color: #a71029c8;
+    --sidenav-backdrop-color: #3636368d;
 
 
     body {

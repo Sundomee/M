@@ -1,0 +1,61 @@
+:host {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.sidenav {
+    &__backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        background-color: var(--sidenav-backdrop-color);
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__container {
+        height: 100%;
+        background-color: var(--lighter-application-main-color);
+        padding: var(--padding-medium);
+        border-top-left-radius: var(--input-border-radius);
+        border-bottom-left-radius: var(--input-border-radius);
+        &.toggled {
+            animation-name: openSidenav;
+            animation-duration: 200ms;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease;
+            animation-delay: 250ms;
+        }
+
+        &.untoggled {
+            animation-name: closeSidenav ;
+            animation-duration: 200ms;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease;
+            animation-delay: 250ms;
+        }
+    }   
+}
+
+@keyframes openSidenav {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 20%;
+    }
+}
+
+@keyframes closeSidenav {
+    0% {
+        width: 20%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}

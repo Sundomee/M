@@ -7,12 +7,12 @@
           [width]="400"
           [widthAnimation]="true"
           [icon]="true"
+          [formControl]="search_controller"
         />
-
-
-
       </div>
-      <div class="home__header--sidebar"></div>
+      <div class="home__header--sidebar">
+        <mat-icon style="color: white;" (click)="sidenav_toggled.set(true)">menu</mat-icon>
+      </div>
     </div>
 
     <section class="tracks-section">
@@ -38,6 +38,8 @@
     </section>
   </div>
 </section>
+
+  <dl-sidenav [sidenavToggled]="sidenav_toggled()" (backdropClick)="onBackdropClick()" [style.width]="!sidenav_toggled() ? '0' : '100%'"/>
 
 <!-- <div class="actions-wrapper">
 
