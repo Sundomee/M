@@ -1,12 +1,12 @@
 import {Component, output} from "@angular/core";
 import { DlInputComponent } from "../input/input.component";
-import { UserBadgeComponent } from "../user-badge/user-badge.component";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'dl-header',
   standalone: true,
-  imports: [DlInputComponent, UserBadgeComponent, ReactiveFormsModule],
+  imports: [DlInputComponent, ReactiveFormsModule, MatIcon],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

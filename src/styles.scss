@@ -1,16 +1,18 @@
 @use './app/styles/global-reset.scss';
 @use './app/styles/theme.scss';
 
-:root {
+:root { // #0a0a0a
     --application-main-color: #000000f7;
-    --lighter-application-main-color: #090909;
+    --lighter-application-main-color: #0a0a0a;
+    --contrast: #121212;
     --input-background-color: #595959;
     --input-border-radius: 16px;
     --input-border-color: #7e7e7e8a;
     --icon-search-color: #828282;
     --icon-search-darker-color: #b1b1b1;
     --padding-medium: 12px;
-    --header-background-color: #a71029c8;
+    --header-background-fx-color: #a71029c8;
+    --header-background-f-lighter-color: #e88192c8;
     --sidenav-backdrop-color: #3636368d;
 
     --user-badge-size: 50px;

@@ -1,23 +1,94 @@
 .header {
+  display: flex;
+  height: 104px;
+  width: 100%;
+  background-color: var(--lighter-application-main-color);
+  // background-color: var(--header-background-color);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__wrapper {
     display: flex;
-    height: 104px;
-    width: 100%;
-    background-color: var(--header-background-color);
-    padding: var(--padding-medium);
-    justify-content: center;
     align-items: center;
+    height: 95%;
+    width: 100%;
 
     &--search {
       margin: 0 auto;
     }
 
-    &--sidebar {
-      display: flex;
-      flex-direction: column;
+    &--fx-wrapper {
+      background-color: var(--header-background-fx-color);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
 
-      & > mat-icon {
+    }
+
+    &--fx-wrapper-thing {
+      height: 200%;
+      width: 50%;
+      background-color: rgb(130, 93, 93);
+      position: absolute;
+      filter: blur(10px);
+      clip-path: ellipse(25% 40% at 50% 50%);
+      animation: strafe 30s linear infinite;
+    }
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+
+    &--toggle {
+
+      outline: none;
+      border: none;
+      border-radius: 8px;
+      background-color: transparent;
+      padding: 8px;
+      cursor: pointer;
+      display: grid;
+      place-content: center;
+      transition: all .2s;
+      background-color: rgba(184, 184, 184, 0.339);
+
+      &:hover {
+        background-color: rgba(162, 154, 154, 0.615);
+      }
+
+      &>mat-icon {
         align-self: flex-end;
-        cursor: pointer;
+        font-size: 32px;
+        height: 32px;
+        width: 32px;
       }
     }
   }
+
+  &__actions {
+    width: 100%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-medium);
+    background-color: var(--lighter-application-main-color);
+    z-index: 1;
+    backdrop-filter: blur(20px);
+  }
+}
+
+@keyframes strafe {
+  from {
+    left: -5%;
+    rotate: 360deg;
+  }
+
+  to {
+    left: 120%;
+    rotate: -360deg;
+  }
+}

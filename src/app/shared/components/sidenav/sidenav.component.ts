@@ -11,15 +11,15 @@ import { UserBadgeComponent } from "../user-badge/user-badge.component";
 export class DlSidenavComponent implements OnInit {
 
     public readonly sidenavToggled = input.required<boolean>()
-    public readonly backdropClick = output()
+    public readonly position = input<'left' | 'right'>('right');
+    public readonly backdropClick = output();
     public readonly toggleComplete: WritableSignal<boolean> = signal(false);
     
     ngOnInit(): void {
-        
+        console.log(this.position());
     }
 
     onAnimationEnd(event: AnimationEvent) {
-        console.log(event);
         const animationName = event.animationName.toLowerCase()
         if (animationName.includes('sidenav')) this.toggleComplete.set(animationName.includes('opensidenav'));    
     }

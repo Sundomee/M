@@ -8,7 +8,7 @@ import { Track } from "../../shared/models/track-model";
 import { Router } from "@angular/router";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { DlSidenavComponent } from "../../shared/components/sidenav/sidenav.component";
 import { DlHeaderComponent } from "../../shared/components/header/header.component";
 

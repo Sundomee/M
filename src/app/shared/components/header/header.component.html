@@ -1,9 +1,19 @@
 <div class="header">
-  <div class="header--search">
-    <dl-input [width]="400" [widthAnimation]="true" [icon]="true" [formControl]="search_controller" />
-  </div>
-  <div class="header--sidebar">
-    <!-- <mat-icon style="color: white;" (click)="sidenav_toggled.set(true)">menu</mat-icon> -->
-    <dl-user-badge (toggleSidenav)="toggleSidenav.emit()" />
+  <div class="header__wrapper">
+
+    <div class="header__wrapper--fx-wrapper">
+      <div class="header__wrapper--fx-wrapper-thing"></div>
+
+      <div class="header__actions">
+        <div class="header__wrapper--search">
+          <dl-input [width]="400" [widthAnimation]="true" [icon]="true" [formControl]="search_controller" />
+        </div>
+        <div class="header__sidebar">
+          <button class="header__sidebar--toggle">
+            <mat-icon style="color: white;" (click)="toggleSidenav.emit()">menu</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

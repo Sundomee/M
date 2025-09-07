@@ -1,10 +1,37 @@
-<div class="sidenav__backdrop" (click)="backdropClick.emit()">
-    <div class="sidenav__container" (click)="$event.stopImmediatePropagation()" (animationend)="onAnimationEnd($event)"
-        [class.toggled]="sidenavToggled()" [class.untoggled]="!sidenavToggled()">
-        
-        <div [class.sidenav__container--slide-in]="toggleComplete()"  class="sidenav__user-badge">
+<div class="sidenav__backdrop" (click)="backdropClick.emit()" [style.justifyContent]="position() === 'right' ? 'flex-end' : 'flex-start'">
+    <div class="sidenav__container" 
+        (click)="$event.stopImmediatePropagation()" 
+        (animationend)="onAnimationEnd($event)"
+        [class.toggled]="sidenavToggled()" 
+        [class.untoggled]="!sidenavToggled()">
+
+        <div [class.sidenav__container--slide-in]="toggleComplete()" class="sidenav__user-badge">
             <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
         </div>
-    
+
+        <div [style.animationDelay.ms]="(1 * 50)" [class.sidenav__container--slide-in]="toggleComplete()" class="sidenav__user-badge">
+            <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
+        </div>
+
+        <div [style.animationDelay.ms]="(2 * 50)" [class.sidenav__container--slide-in]="toggleComplete()" class="sidenav__user-badge">
+            <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
+        </div>
+
+        <div [style.animationDelay.ms]="(3 * 50)" [class.sidenav__container--slide-in]="toggleComplete()" class="sidenav__user-badge">
+            <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
+        </div>
+
+        <div [style.animationDelay.ms]="(4 * 50)" [class.sidenav__container--slide-in]="toggleComplete()" class="sidenav__user-badge">
+            <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
+        </div>
+
+        <div [style.animationDelay.ms]="(5 * 50)" [class.sidenav__container--slide-in]="toggleComplete()" class="sidenav__user-badge">
+            <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
+        </div>
+
+        <div [style.animationDelay.ms]="(6 * 50)" [class.sidenav__container--slide-in]="toggleComplete()" class="sidenav__user-badge">
+            <dl-user-badge [clickable]="true" (toggleSidenav)="backdropClick.emit()" />
+        </div>
+
     </div>
 </div>
