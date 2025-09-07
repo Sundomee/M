@@ -13,7 +13,8 @@ div {
 
     // bordo
     border-radius: var(--input-border-radius);
-    border: none ;// 1px solid rgba(157, 157, 157, 0.505);
+    border: 1px solid var(--input-border-color);
+    // border: none ;// 1px solid rgba(157, 157, 157, 0.505);
     outline: none;
 
     // &:focus {

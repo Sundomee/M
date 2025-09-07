@@ -22,6 +22,7 @@
         padding: var(--padding-medium);
         border-top-left-radius: var(--input-border-radius);
         border-bottom-left-radius: var(--input-border-radius);
+        overflow-x: hidden;
 
         &.toggled {
             animation-name: openSidenav;
@@ -35,6 +36,14 @@
             animation-duration: 200ms;
             animation-fill-mode: forwards;
             animation-timing-function: ease;
+        }
+
+        & > div {
+            opacity: 0;
+        }
+
+        &--slide-in {
+            animation: slideIn 200ms ease-out forwards;
         }
     }
 
@@ -60,5 +69,17 @@
 
     to {
         width: 0%;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
