@@ -1,0 +1,49 @@
+<div class="signup">
+    <div class="signup__wrapper">
+        <div class="signup__wrapper--form-container">
+            <section class="form">
+                <header class="form__header">
+                    @if (mode() === 'signup') {
+                    <span>Registrazione</span>
+                    } @else {
+                    <span>Login</span>
+                    }
+                    <button class="form__header--switch">
+                        @if (mode() === 'signup') {
+                        Login
+                        } @else {
+                        Registrazione
+                        }
+                        <mat-icon>arrow_right_alt</mat-icon>
+                    </button>
+                </header>
+                <form (submit)="signup()" [formGroup]="sign_group">
+                    <section class="form__name-email">
+                        <div class="form__name-input-wrapper" >
+                            <input type="text" placeholder="Inserisci nome" formControlName="username" class="base-input base-input--form">
+                        </div>
+
+                        <div class="form__email-input-wrapper">
+                            <input type="email" placeholder="Inserisci email" formControlName="email" class="base-input base-input--form">
+                        </div>
+
+                    </section>
+
+                    <section class="form__password">
+                            <div class="form__password-input-wrapper">
+                            <input type="password" placeholder="Inserisci password" formControlName="password" class="base-input base-input--form">
+                        </div>
+
+                        <div class="form__password-confirm-input-wrapper">
+                            <input type="password" placeholder="Conferma password" formControlName="passwordConfirm" class="base-input base-input--form">
+                        </div>
+                    </section>
+
+                    <section class="form__actions">
+                        <button class="form__submit base-button" type="submit">Registrati</button>
+                    </section>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

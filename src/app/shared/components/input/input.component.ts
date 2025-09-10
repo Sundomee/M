@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, input, viewChild } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatIcon } from "@angular/material/icon";
 import { DlControlBaseComponent } from "../dl-control-base/dl-control-base.component";
@@ -14,7 +14,8 @@ import { DlControlBaseComponent } from "../dl-control-base/dl-control-base.compo
     ]
 })
 export class DlInputComponent extends DlControlBaseComponent<string> {
-    public readonly width = input<number>();
     public readonly widthAnimation = input<boolean>();
     public readonly icon = input<boolean>();
+    public readonly iconName = input<string>();
+    public readonly placeholder = input<string>();
 }

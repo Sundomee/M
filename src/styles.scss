@@ -1,9 +1,10 @@
 @use './app/styles/global-reset.scss';
 @use './app/styles/theme.scss';
 
-:root { // #0a0a0a
-    --application-main-color: #000000f7;
-    --lighter-application-main-color: #0a0a0a;
+:root {
+    // #0a0a0a
+    --application-main-color: #111111f7;
+    --lighter-application-main-color: #2b2b2b;
     --contrast: #121212;
     --input-background-color: #595959;
     --input-border-radius: 16px;
@@ -23,4 +24,35 @@
     body {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
+}
+
+.base-input {
+    // generale
+    background-color: var(--input-background-color);
+    padding: 2px 12px;
+
+    // bordo
+    border-radius: var(--input-border-radius);
+    border: 1px solid var(--input-border-color);
+    // border: none ;// 1px solid rgba(157, 157, 157, 0.505);
+    outline: none;
+
+    // &:focus {
+    //     border: 1px solid rgb(157, 157, 157, 0.8);
+    // }
+
+    box-shadow: rgba(86, 86, 87, 0.12) 0px 2px 4px 0px,
+        rgba(86, 86, 87, 0.32) 0px 2px 16px 0px;
+    color-scheme: dark;
+    transition: border 125ms;
+}
+
+.base-button {
+    border-radius: 18px;
+    padding: 4px 12px;
+    outline: none;
+    border: 1px solid var(--input-border-color);
+    background-color: transparent;
+    color: var(--icon-search-darker-color);
+    cursor: pointer;
 }

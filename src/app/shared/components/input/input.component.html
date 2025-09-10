@@ -1,13 +1,13 @@
 <div style="position: relative;">
     <input class="dl-input" 
-    [style.width]="width() ? (width() + 'px') : 'unset'"
     [class.width-animation]="widthAnimation()"
     [disabled]="disabled()"
     (input)="_handleChange($any($event.target).value)"
+    [placeholder]="placeholder() ?? ''"
     >
 
-    @if (icon()) {
-        <mat-icon class="icon">search</mat-icon>
+    @if (icon() || iconName()) {
+        <mat-icon class="icon">{{iconName() ?? 'search'}}</mat-icon>
     }
 
 </div>

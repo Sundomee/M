@@ -15,5 +15,9 @@ export const routes: Routes = [
         loadComponent: () => import('./shared/components/player-component/player.component').then((c) => c.PlayerComponent)
       }
     ]
+  },
+  {
+    path: 'sign',
+    loadComponent: () => import('./features/sign-form/sign-form.component').then((c) => c.SignFormComponent),
   }
 ];

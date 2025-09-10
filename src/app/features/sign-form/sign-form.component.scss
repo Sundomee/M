@@ -1,0 +1,190 @@
+:host {
+    width: 100%;
+    height: 100%;
+}
+
+.signup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+
+        &--form-container {
+            background-color: var(--contrast);
+            padding: 25px;
+            width: 30%;
+            height: fit-content;
+            z-index: 2;
+            border-radius: 8px;
+            animation: shadowAnimator 2s infinite;
+        }
+    }
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    color: ivory;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+
+    &__header {
+        width: 100%;
+        flex: 0 0 5%;
+        font-size: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &--switch {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent;
+            outline: none;
+            border: 1px var(--input-border-color);
+            border-radius: 18px;
+            padding: 2px 12px;
+            color: currentColor;
+            cursor: pointer;
+            transition: all .2s;
+            border-style: dashed;
+
+            &:hover {
+                padding: 2px 18px;
+                border-style: solid;
+            }
+        }
+    }
+
+    form {
+        flex: 1 0 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    &__name-email {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+
+        div {
+            flex-basis: 45%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    &__password {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.gradient-border {
+    --border-width: 1px;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    font-family: Lato, sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: white;
+    background: #222;
+    border-radius: 10px;
+
+    &::after {
+        position: absolute;
+        content: "";
+        top: calc(-1 * var(--border-width));
+        left: calc(-1 * var(--border-width));
+        z-index: -1;
+        width: calc(100% + var(--border-width) * 2);
+        height: calc(100% + var(--border-width) * 2);
+        background: linear-gradient(60deg,
+                hsl(224, 85%, 66%),
+                hsl(269, 85%, 66%),
+                hsl(314, 85%, 66%),
+                hsl(359, 85%, 66%),
+                hsl(44, 85%, 66%),
+                hsl(89, 85%, 66%),
+                hsl(134, 85%, 66%),
+                hsl(179, 85%, 66%));
+        background-size: 300% 300%;
+        background-position: 0 50%;
+        border-radius: 10px;
+        animation: moveGradient 4s alternate infinite;
+    }
+}
+
+@keyframes moveGradient {
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.base-input {
+    &--form {
+        width: 100%;
+        height: 40px;
+        border-radius: 28px;
+        font-size: 18px;
+
+        &::placeholder {
+            color: var(--icon-search-darker-color);
+        }
+    }
+}
+
+dl-input {
+    display: block;
+    width: 50%;
+    height: 40px;
+}
+
+@keyframes shadowAnimator {
+    0% {
+        box-shadow: rgba(80, 80, 80, 0.25) 0px 54px 55px, rgba(80, 80, 80, 0.12) 0px -12px 30px, rgba(80, 80, 80, 0.12) 0px 4px 6px, rgba(80, 80, 80, 0.17) 0px 12px 13px, rgba(80, 80, 80, 0.09) 0px -3px 5px;
+    }
+
+    50% {
+        box-shadow: rgba(180, 180, 180, 0.25) 0px -50px 50px, rgba(180, 180, 180, 0.12) 0px 20px -30px, rgba(180, 180, 180, 0.12) 0px -4px -6px, rgba(180, 180, 180, 0.17) 0px -12px -13px, rgba(180, 180, 180, 0.09) 0px 3px -5px;
+    }
+
+    100% {
+        box-shadow: rgba(80, 80, 80, 0.25) 0px 54px 55px, rgba(80, 80, 80, 0.12) 0px -12px 30px, rgba(80, 80, 80, 0.12) 0px 4px 6px, rgba(80, 80, 80, 0.17) 0px 12px 13px, rgba(80, 80, 80, 0.09) 0px -3px 5px;
+    }
+}
