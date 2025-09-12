@@ -5,6 +5,8 @@
     // #0a0a0a
     --application-main-color: #111111f7;
     --lighter-application-main-color: #2b2b2b;
+    --transparent--app-main-color: rgba(25, 25, 25, .4);
+    --transparent--app-secondary-color: rgba(30, 30, 30, .4);
     --contrast: #121212;
     --input-background-color: #595959;
     --input-border-radius: 16px;
@@ -55,4 +57,9 @@
     background-color: transparent;
     color: var(--icon-search-darker-color);
     cursor: pointer;
+}
+
+.base-transparency {
+    background-color: var(--transparent--app-main-color);
+    backdrop-filter: blur(20px);
 }

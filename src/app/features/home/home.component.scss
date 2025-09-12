@@ -6,7 +6,28 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    // background-color: ;
+  }
+
+  &__container {
+    background-image: url('../../utils/images/papers/bg-img2.png');
+    width: 100%;
+    height: 100%;
+  }
+
+  &__container-panel {
+    backdrop-filter: blur(30px);
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  &__dx-sidenav-wrapper {
+    height: 100%;
+    flex-basis: 20%;
+    background-color: var(--transparent--app-secondary-color);
+    border-radius: 24px;
   }
 
   .tracks-section {
@@ -14,6 +35,8 @@
     flex: 1 0 50%;
     justify-content: center;
     align-items: center;
+    background-color: var(--transparent--app-secondary-color);
+    border-radius: 24px;
 
     .track {
       width: 250px;

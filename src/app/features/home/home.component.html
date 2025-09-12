@@ -1,33 +1,43 @@
 <section class="home">
   <div class="home__wrapper">
 
-    <dl-header (toggleSidenav)="sidenav_toggled.set(true)"/>
+    <dl-header (toggleSidenav)="sidenav_toggled.set(true)" />
 
-    <section class="tracks-section">
-      <div class="tracks-sections__container">
-        @for (track of tracks(); let index = $index; track index) {
-        <div class="track">
-          <div class="track__title">
-            {{ track.title }}
-          </div>
-
-          <div class="track__image-wrap">
-            <!-- <img src="./src/app/utils/images/papers/guts-2k.jpg" class="track__image" alt="" >-->
-          </div>
-
-          <div class="track__actions">
-            <button (click)="navigateToTrack(track)">play</button>
-          </div>
-
+    <div class="home__container">
+      <div class="home__container-panel base-transparency">
+        <div class="home__dx-sidenav-wrapper">
+          <div class="home__dx-sidenav"></div>
         </div>
 
-        }
+        <section class="tracks-section">
+          <div class="tracks-sections__container">
+            @for (track of tracks(); let index = $index; track index) {
+            <div class="track">
+              <div class="track__title">
+                {{ track.title }}
+              </div>
+
+              <div class="track__image-wrap">
+                <!-- <img src="./src/app/utils/images/papers/guts-2k.jpg" class="track__image" alt="" >-->
+              </div>
+
+              <div class="track__actions">
+                <button (click)="navigateToTrack(track)">play</button>
+              </div>
+
+            </div>
+
+            }
+          </div>
+        </section>
       </div>
-    </section>
+
+    </div>
   </div>
 </section>
 
-  <dl-sidenav [sidenavToggled]="sidenav_toggled()" (backdropClick)="onBackdropClick()" [style.width]="!sidenav_toggled() ? '0' : '100%'"/>
+<dl-sidenav [sidenavToggled]="sidenav_toggled()" (backdropClick)="onBackdropClick()"
+  [style.width]="!sidenav_toggled() ? '0' : '100%'" />
 
 <!-- <div class="actions-wrapper">
 

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { MatIcon } from "@angular/material/icon";
 import { AuthService } from "../../services/auth.service";
 import { SignupBody } from "../../utils/files/types";
+import { passwordValidator } from "./validators/password-validator.directive";
 
 @Component({
     selector: 'sign-form',
@@ -19,7 +20,7 @@ export class SignFormComponent {
         password: new FormControl(''),
         username: new FormControl(''),
         passwordConfirm: new FormControl(''),
-    })
+    }, { validators: passwordValidator })
 
     private readonly authService: AuthService = inject(AuthService);
 

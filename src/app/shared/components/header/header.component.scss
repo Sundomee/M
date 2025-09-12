@@ -29,12 +29,15 @@
 
     &--fx-wrapper-thing {
       height: 200%;
-      width: 50%;
-      background-color: rgb(130, 93, 93);
+      width: 200%;
+      background-color: rgb(39, 39, 39, .4);
       position: absolute;
+      right: 50%;
+      transform: translateX(50%);
       filter: blur(10px);
       clip-path: ellipse(25% 40% at 50% 50%);
-      animation: strafe 30s linear infinite;
+      transform-origin: right;
+      animation: strafe 180s linear infinite;
     }
   }
 
@@ -83,12 +86,10 @@
 
 @keyframes strafe {
   from {
-    left: -5%;
     rotate: 360deg;
   }
 
   to {
-    left: 120%;
     rotate: -360deg;
   }
 }
