@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, inject, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit, WritableSignal, inject, signal } from "@angular/core";
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
@@ -14,7 +14,6 @@ import { DlHeaderComponent } from "../../shared/components/header/header.compone
 
 @Component({
   selector: 'c-home',
-  standalone: true,
   imports: [
     MatIconModule,
     ReactiveFormsModule,
@@ -28,17 +27,117 @@ import { DlHeaderComponent } from "../../shared/components/header/header.compone
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home implements OnInit {
 
   public readonly sidenav_toggled = signal<boolean>(false)
-  
+
   public readonly tracks: WritableSignal<Track[]> = signal([]);
   private readonly trackService: TrackService = inject(TrackService);
   private readonly router: Router = inject(Router);
 
+  public readonly fakeArtists = [
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
+    {
+      name: 'ciccio',
+      img: '../../utils/images/papers/bg-img-1.jpg'
+    },
 
-  constructor() {}
+  ]
+
+  constructor() { }
 
   async ngOnInit(): Promise<void> {
 

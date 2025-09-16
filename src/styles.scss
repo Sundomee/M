@@ -47,6 +47,10 @@
         rgba(86, 86, 87, 0.32) 0px 2px 16px 0px;
     color-scheme: dark;
     transition: border 125ms;
+
+    &::placeholder {
+        color: #b1b1b1;
+    }
 }
 
 .base-button {
