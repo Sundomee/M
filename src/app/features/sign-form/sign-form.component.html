@@ -6,43 +6,54 @@
                     @if (mode() === 'signup') {
                     <span>Registrazione</span>
                     } @else {
-                    <span>Login</span>
+                    <span>Accedi</span>
                     }
                     <button class="form__header--switch">
                         @if (mode() === 'signup') {
-                        Login
+                        Accedi
                         } @else {
                         Registrazione
                         }
                         <mat-icon>arrow_right_alt</mat-icon>
                     </button>
                 </header>
+
                 <form (submit)="signup()" [formGroup]="sign_group">
                     <section class="form__name-email">
-                        <div class="form__name-input-wrapper" >
-                            <input type="text" placeholder="Inserisci nome" formControlName="username" class="base-input base-input--form">
+                        <div class="form__name-input-wrapper">
+                            <input type="text" placeholder="Inserisci nome" formControlName="username" 
+                                    dlTooltip [message]="'ghfsd nfhdueshifogheh iehshgeofho'" [extraClass]="'error'" 
+                                    [openOnTrigger]="!!sign_group.controls.email.errors" [openOnHover]="false"
+                                    class="base-input base-input--form">
                         </div>
 
                         <div class="form__email-input-wrapper">
-                            <input type="email" placeholder="Inserisci email" formControlName="email" class="base-input base-input--form">
+                            <input type="email" placeholder="Inserisci email" formControlName="email"
+                                class="base-input base-input--form">
                         </div>
 
                     </section>
 
                     <section class="form__password">
-                            <div class="form__password-input-wrapper">
-                            <input type="password" placeholder="Inserisci password" formControlName="password" class="base-input base-input--form">
+                        <div class="form__password-input-wrapper">
+                            <input type="password" placeholder="Inserisci password" formControlName="password"
+                                class="base-input base-input--form">
                         </div>
 
                         <div class="form__password-confirm-input-wrapper">
-                            <input type="password" placeholder="Conferma password" formControlName="passwordConfirm" class="base-input base-input--form">
+                            <input type="password" placeholder="Conferma password" formControlName="passwordConfirm"
+                                class="base-input base-input--form">
                         </div>
                     </section>
 
+
+                </form>
+
+                <footer class="form__footer">
                     <section class="form__actions">
                         <button class="form__submit base-button" type="submit">Registrati</button>
                     </section>
-                </form>
+                </footer>
             </section>
         </div>
     </div>

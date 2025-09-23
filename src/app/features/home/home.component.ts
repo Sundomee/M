@@ -69,7 +69,7 @@ export class Home implements OnInit {
     {
       name: 'ciccio',
       img: '../../utils/images/papers/bg-img-1.jpg'
-    },
+    }, 
     {
       name: 'ciccio',
       img: '../../utils/images/papers/bg-img-1.jpg'
@@ -102,39 +102,6 @@ export class Home implements OnInit {
       name: 'ciccio',
       img: '../../utils/images/papers/bg-img-1.jpg'
     },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-    {
-      name: 'ciccio',
-      img: '../../utils/images/papers/bg-img-1.jpg'
-    },
-
   ]
 
   constructor() { }

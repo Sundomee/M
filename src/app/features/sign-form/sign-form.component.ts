@@ -4,19 +4,22 @@ import { MatIcon } from "@angular/material/icon";
 import { AuthService } from "../../services/auth.service";
 import { SignupBody } from "../../utils/files/types";
 import { passwordValidator } from "./validators/password-validator.directive";
+import { DlTooltipDirective } from "../../shared/components/dl-tooltip/dl-tooltip.directive";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'sign-form',
-    imports: [MatIcon, ReactiveFormsModule],
+    imports: [MatIcon, ReactiveFormsModule, DlTooltipDirective],
     templateUrl: 'sign-form.component.html',
     styleUrl: 'sign-form.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignFormComponent {
 
+    caricamento: boolean = false
     public readonly mode: WritableSignal<'signup' | 'login'> = signal('signup')
     public readonly sign_group = new FormGroup<SignGroup>({
-        email: new FormControl('', Validators.email),
+        email: new FormControl('', [Validators.email, Validators.required]),
         password: new FormControl(''),
         username: new FormControl(''),
         passwordConfirm: new FormControl(''),
@@ -38,6 +41,11 @@ export class SignFormComponent {
 
             }
         })
+
+        this.sign_group.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
+            console.log(this.sign_group.controls.email.errors);
+            
+        })
     }
 
     async signup() {
@@ -52,7 +60,7 @@ export class SignFormComponent {
         console.log(signupResponse);
     }
 }
-
+6
 interface SignGroup {
     email: FormControl<string | null>;
     password: FormControl<string | null>;

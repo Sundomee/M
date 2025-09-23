@@ -10,54 +10,58 @@
         </div>
 
         <section class="main">
-          <div class="main__wrapper">
-            <div class="category">
-                <div class="category__header">
-                  <span class="category__header--title">Artisti più popolari</span>
-                  <input type="text" class="search base-input" placeholder="Cerca..">
-                </div>
-                <div class="category__body">
-                  @for (item of fakeArtists; track $index) {
-                  <div class="category__card">
-                    <div class="category__card--img-wrapper">
-                      <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
-                    </div>
-                    <div class="category__card--name">{{item.name}}</div>
-                  </div>
-                  }
-                </div>
+          <div class="category">
+            <div class="category__header">
+              <span class="category__header--title">Artisti popolari</span>
             </div>
-            <div class="category">
-              <!-- <div class="category__header">
-                <span class="category__header--title">Artisti più popolari</span>
-                <input type="text" class="search base-input" placeholder="Cerca..">
-              </div>
-              <div class="category__body">
-                @for (item of fakeArtists; track $index) {
-                <div class="category__card">
+            <div class="category__body">
+              @for (item of fakeArtists; track $index) {
+              <div class="category__card">
+                <div class="category__card-wrapper">
+
                   <div class="category__card--img-wrapper">
                     <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
                   </div>
                   <div class="category__card--name">{{item.name}}</div>
                 </div>
-                }
-              </div> -->
-            </div>
-            <div class="category">
-              <!-- <div class="category__header">
-                <span class="category__header--title">Artisti più popolari</span>
-                <input type="text" class="search base-input" placeholder="Cerca..">
               </div>
-              <div class="category__body">
-                @for (item of fakeArtists; track $index) {
-                <div class="category__card">
+              }
+            </div>
+          </div>
+          <div class="category">
+            <div class="category__header">
+              <span class="category__header--title">Hit del momento</span>
+            </div>
+            <div class="category__body">
+              @for (item of fakeArtists; track $index) {
+              <div class="category__card">
+                <div class="category__card-wrapper">
+
                   <div class="category__card--img-wrapper">
                     <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
                   </div>
                   <div class="category__card--name">{{item.name}}</div>
                 </div>
-                }
-              </div> -->
+              </div>
+              }
+            </div>
+          </div>
+          <div class="category">
+            <div class="category__header">
+              <span class="category__header--title">Albums</span>
+            </div>
+            <div class="category__body">
+              @for (item of fakeArtists; track $index) {
+              <div class="category__card">
+                <div class="category__card-wrapper">
+
+                  <div class="category__card--img-wrapper">
+                    <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
+                  </div>
+                  <div class="category__card--name">{{item.name}}</div>
+                </div>
+              </div>
+              }
             </div>
           </div>
         </section>

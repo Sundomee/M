@@ -22,12 +22,15 @@
 
         &--form-container {
             background-color: var(--contrast);
-            padding: 25px;
             width: 30%;
             height: fit-content;
             z-index: 2;
             border-radius: 8px;
             animation: shadowAnimator 100ms infinite;
+            background-image: url('../../../../public/assets/images/papers/bg-img2.png');
+            background-size: contain;
+            overflow: hidden;
+
         }
     }
 }
@@ -39,6 +42,15 @@
     display: flex;
     flex-direction: column;
     gap: 55px;
+    margin-left: auto;
+    align-items: flex-start;
+    backdrop-filter: blur(4px);
+    background: linear-gradient(to right top, rgb(29, 29, 29) 65%, rgba(255, 255, 255, 0));
+    padding: 12px;
+
+    &__name-input-wrapper {
+        position: relative;
+    }
 
     &__header {
         width: 100%;
@@ -75,6 +87,8 @@
         display: flex;
         flex-direction: column;
         gap: 60px;
+        width: 55%;
+        padding: 0 12px;
     }
 
     &__name-email {
@@ -101,6 +115,11 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+    }
+
+    &__footer {
+        width: 100%;
+        text-align: right;
     }
 }
 
