@@ -43,14 +43,18 @@
     flex-direction: column;
     gap: 55px;
     margin-left: auto;
-    align-items: flex-start;
-    backdrop-filter: blur(4px);
+    align-items: center;
+    backdrop-filter: blur(2px);
     background: linear-gradient(to right top, rgb(29, 29, 29) 65%, rgba(255, 255, 255, 0));
     padding: 12px;
+    inset: -4px;
 
-    &__name-input-wrapper {
+    &__name-input-wrapper,
+    &__email-input-wrapper {
         position: relative;
     }
+
+     
 
     &__header {
         width: 100%;
@@ -184,6 +188,10 @@
 
         &::placeholder {
             color: var(--icon-search-darker-color);
+        }
+
+        &-error {
+            border: 1px solid var(--error-surface-color);
         }
     }
 }

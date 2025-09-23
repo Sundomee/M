@@ -19,11 +19,11 @@ export class SignFormComponent {
     caricamento: boolean = false
     public readonly mode: WritableSignal<'signup' | 'login'> = signal('signup')
     public readonly sign_group = new FormGroup<SignGroup>({
-        email: new FormControl('', [Validators.email, Validators.required]),
-        password: new FormControl(''),
-        username: new FormControl(''),
-        passwordConfirm: new FormControl(''),
-    }, { validators: passwordValidator })
+        email: new FormControl('',  [Validators.required, Validators.email]),
+        username: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
+        passwordConfirm: new FormControl('', Validators.required),
+    }, { validators: passwordValidator, updateOn: 'blur' })
 
     private readonly authService: AuthService = inject(AuthService);
 
@@ -41,15 +41,10 @@ export class SignFormComponent {
 
             }
         })
-
-        this.sign_group.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-            console.log(this.sign_group.controls.email.errors);
-            
-        })
     }
 
     async signup() {
-
+        debugger
         const signupBody: SignupBody = {
             email: this.sign_group.controls.email.value ?? '',
             password: this.sign_group.controls.password.value ?? '',
@@ -59,8 +54,14 @@ export class SignFormComponent {
         const signupResponse = await this.authService.signup(signupBody)
         console.log(signupResponse);
     }
+
+    validateEmail() {
+        const emailControl =  this.sign_group.controls.email
+        emailControl.addValidators(Validators.email);
+        emailControl.updateValueAndValidity();
+    }
 }
-6
+
 interface SignGroup {
     email: FormControl<string | null>;
     password: FormControl<string | null>;

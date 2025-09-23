@@ -19,6 +19,9 @@
     --header-background-f-lighter-color: #e88192c8;
     --sidenav-backdrop-color: #3636368d;
 
+    --error-surface-color: #c48585;
+    --error-text-color: #b11b1b;
+
     --user-badge-size: 50px;
     --user-badge-gap: 12px;
     --user-badge-padding: 12px;
@@ -70,8 +73,9 @@
 }
 
 .dl-tooltip {
-    width: fit-content;
+    width: max-content;
     min-width: 50px;
+    max-width: 300px;
     height: auto;
     background-color: whitesmoke;
     border-radius: 12px;
@@ -81,16 +85,31 @@
     right: 50%;
     text-align: center;
     padding: 8px;
-    top: -50px;
+    top: -28px;
     left: 50%;
     transform: translate(-50%, -50%);
     animation: fadeIn 150ms ease forwards;
     transform-origin: left;
+    word-wrap: break-word;
 
     &--error {
-        background-color: rgb(196, 133, 133);
-        color: rgb(177, 27, 27);
+        background-color: var(--error-surface-color);
+        color: var(--error-text-color);
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: rgb(196, 133, 133);
+            left: 50%;
+            transform: translate(50%, 100%);
+            bottom: 8px;
+            rotate: 45deg;
+        }
     }
+
+
 }
 
 @keyframes fadeIn {

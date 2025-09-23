@@ -1,4 +1,4 @@
-import { Directive, effect, inject, input, Renderer2 } from "@angular/core";
+import { Directive, effect, ElementRef, inject, input, Renderer2 } from "@angular/core";
 
 @Directive({
     selector: '[dlTooltip]',
@@ -8,12 +8,15 @@ import { Directive, effect, inject, input, Renderer2 } from "@angular/core";
     }
 })
 export class DlTooltipDirective {
-    private readonly renderer = inject(Renderer2);
     public tooltipElement: HTMLElement | null = null;
     public readonly openOnTrigger = input<boolean>(false)
     public readonly message = input.required<string>();
     public readonly extraClass = input<'error'>();
     public readonly openOnHover = input.required<boolean>();
+
+    
+    private readonly renderer = inject(Renderer2);
+    private readonly elementRef = inject(ElementRef) 
 
     constructor() {
         effect(() => {
@@ -41,13 +44,21 @@ export class DlTooltipDirective {
 
         const hasRect = (value: any): value is HTMLElement => typeof value.getBoundingClientRect === 'function';
 
-        if (event && hasRect(event.target)) {
+        if (event && hasRect(event.target) ) {
             this.renderer.insertBefore(event ? event.target.parentNode : this.tooltipElement?.parentNode, this.tooltipElement, event.target);
+        } else {
+            this.renderer.insertBefore(this.elementRef.nativeElement.parentNode, this.tooltipElement, this.elementRef.nativeElement);
         }
     }
 
     private doCloseOverlay(event?: any) {
-        this.renderer.removeChild(event ? event.target.parentNode : this.tooltipElement?.parentNode, this.tooltipElement);
+
+        if (event && event.target && event.target.parentNode && this.tooltipElement && this.tooltipElement.parentNode) {
+            this.renderer.removeChild(event ? event.target?.parentNode : this.tooltipElement?.parentNode, this.tooltipElement);
+        } else {
+            this.renderer.removeChild(this.elementRef.nativeElement.parentNode, this.tooltipElement);
+        }
+
         this.tooltipElement = null
     }
 
