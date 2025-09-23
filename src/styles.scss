@@ -55,6 +55,10 @@
     &::placeholder {
         color: #b1b1b1;
     }
+
+    &--error {
+        border: 1px solid var(--error-surface-color);
+    }
 }
 
 .base-button {

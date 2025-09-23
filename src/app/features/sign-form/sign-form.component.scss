@@ -54,7 +54,7 @@
         position: relative;
     }
 
-     
+
 
     &__header {
         width: 100%;
@@ -189,12 +189,9 @@
         &::placeholder {
             color: var(--icon-search-darker-color);
         }
-
-        &-error {
-            border: 1px solid var(--error-surface-color);
-        }
     }
 }
+
 
 dl-input {
     display: block;

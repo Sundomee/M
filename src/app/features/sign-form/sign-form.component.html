@@ -27,7 +27,7 @@
 
                             <input type="text" placeholder="Inserisci nome" formControlName="username" dlTooltip
                                 message="Nome obbligatorio" [extraClass]="'error'"
-                                [openOnTrigger]="validateNameRequired" [openOnHover]="false" [class.base-input--form-error]="validateNameRequired"
+                                [openOnTrigger]="validateNameRequired" [openOnHover]="false" [class.base-input--error]="validateNameRequired"
                                 class="base-input base-input--form">
 
                         </div>
@@ -37,7 +37,7 @@
                             <input type="email" placeholder="Inserisci email" formControlName="email" dlTooltip
                                 message="Email invalida" [extraClass]="'error'"
                                 [openOnTrigger]="validateEmail" [openOnHover]="false"
-                                class="base-input base-input--form" [class.base-input--form-error]="validateEmail">
+                                class="base-input base-input--form" [class.base-input--error]="validateEmail">
                         </div>
 
                     </section>
