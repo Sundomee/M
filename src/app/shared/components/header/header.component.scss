@@ -49,17 +49,50 @@
 
       outline: none;
       border: none;
-      border-radius: 8px;
+      border-radius: 50%;
       background-color: transparent;
-      padding: 8px;
       cursor: pointer;
       display: grid;
       place-content: center;
-      transition: all .2s;
-      background-color: rgba(184, 184, 184, 0.339);
+      width: 48px;
+      height: 48px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {}
 
       &:hover {
-        background-color: rgba(162, 154, 154, 0.615);
+        background-color: rgb(43, 43, 43);
+
+        &::after {
+          content: '';
+          width: 56px;
+          height: 56px;
+
+          z-index: -1;
+          border-radius: 50%;
+          position: absolute;
+          opacity: .1;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-image: conic-gradient(from var(--angle), transparent 50%, red);
+          animation: rotation 5s linear infinite;
+          filter: blur(2px);
+          opacity: .6;
+        }
+      }
+
+      @keyframes rotation {
+        0% {
+          --angle: 0deg
+        }
+
+        100% {
+          --angle: 360deg
+        }
       }
 
       &>mat-icon {
@@ -92,4 +125,10 @@
   to {
     rotate: -360deg;
   }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
