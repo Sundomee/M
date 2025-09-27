@@ -148,5 +148,10 @@
     "@schematics/angular:resolver": {
       "typeSeparator": "."
     }
+  },
+  "cli": {
+    "cache": {
+      "enabled": false
+    }
   }
 }

@@ -55,7 +55,7 @@ export class DlTooltipDirective {
 
         if (event && event.target && event.target.parentNode && this.tooltipElement && this.tooltipElement.parentNode) {
             this.renderer.removeChild(event ? event.target?.parentNode : this.tooltipElement?.parentNode, this.tooltipElement);
-        } else {
+        } else if (this.elementRef && this.elementRef.nativeElement?.parentNode && this.tooltipElement) {
             this.renderer.removeChild(this.elementRef.nativeElement.parentNode, this.tooltipElement);
         }
 

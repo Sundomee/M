@@ -24,7 +24,7 @@ export class SignFormComponent {
         password: new FormControl('', Validators.required),
         passwordConfirm: new FormControl('', Validators.required),
     }, { validators: passwordValidator, updateOn: 'blur' })
-
+    
     private readonly authService: AuthService = inject(AuthService);
 
     constructor() {
@@ -59,6 +59,10 @@ export class SignFormComponent {
         const emailControl =  this.sign_group.controls.email
         emailControl.addValidators(Validators.email);
         emailControl.updateValueAndValidity();
+    }
+
+    changeMode() {
+        this.mode.set(this.mode() === 'signup' ? 'login' : 'signup')
     }
 }
 

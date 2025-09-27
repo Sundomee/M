@@ -1,15 +1,16 @@
+@let isSignup = mode() === 'signup';
 <div class="signup">
     <div class="signup__wrapper">
         <div class="signup__wrapper--form-container">
-            <section class="form">
+            <section class="form" [class.form--signup]="isSignup" [class.form--login]="!isSignup">
                 <header class="form__header">
-                    @if (mode() === 'signup') {
+                    @if (isSignup) {
                     <span>Registrazione</span>
                     } @else {
                     <span>Accedi</span>
                     }
-                    <button class="form__header--switch">
-                        @if (mode() === 'signup') {
+                    <button class="form__header--switch" (click)="changeMode()">
+                        @if (isSignup) {
                         Accedi
                         } @else {
                         Registrazione
