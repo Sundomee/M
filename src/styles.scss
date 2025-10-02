@@ -3,32 +3,68 @@
 
 :root {
     // #0a0a0a
-    --application-main-color: #111111f7;
-    --lighter-application-main-color: #2b2b2b;
-    --transparent--app-main-color: rgba(25, 25, 25, .4);
-    --transparent--app-secondary-color: rgba(30, 30, 30, .4);
-    --lighter-transparent-app-main-color: rgba(59, 59, 59, 0.5);
-    --contrast: #121212;
-    --input-background-color: #595959;
-    --input-border-radius: 6px;
-    --input-border-color: #7e7e7e8a;
-    --icon-search-color: #828282;
-    --icon-search-darker-color: #b1b1b1;
-    --padding-medium: 12px;
-    --header-background-fx-color: #a71029c8;
-    --header-background-f-lighter-color: #e88192c8;
-    --sidenav-backdrop-color: #3636368d;
 
-    --error-surface-color: #c48585;
-    --error-text-color: #b11b1b;
+    body.dark-theme {
+        --application-main-color: #111111f7;
+        --lighter-application-main-color: #2b2b2b;
+        --transparent--app-main-color: rgba(25, 25, 25, .4);
+        --transparent--app-secondary-color: rgba(30, 30, 30, .4);
+        --lighter-transparent-app-main-color: rgba(59, 59, 59, 0.5);
+        --contrast: #121212;
+        --input-background-color: #595959;
+        --input-border-radius: 6px;
+        --input-border-color: #7e7e7e8a;
+        --icon-search-color: #828282;
+        --icon-search-darker-color: #b1b1b1;
+        --padding-medium: 12px;
+        --header-background-fx-color: #a71029c8;
+        --header-background-f-lighter-color: #e88192c8;
+        --sidenav-backdrop-color: #3636368d;
 
-    --user-badge-size: 50px;
-    --user-badge-gap: 12px;
-    --user-badge-padding: 12px;
+        --error-surface-color: #c48585;
+        --error-text-color: #b11b1b;
+
+        --user-badge-size: 50px;
+        --user-badge-gap: 12px;
+        --user-badge-padding: 12px;
+    }
+
+    body.light-theme {
+        
+        --application-main-color: #e7e7e7;
+        --lighter-application-main-color: #858585;
+        --transparent--app-main-color: rgba(168, 168, 168, 0.4);
+        --transparent--app-secondary-color: rgba(215, 215, 215, 0.4);
+        --lighter-transparent-app-main-color: rgba(118, 118, 118, 0.5);
+        --contrast: #c4c4c4;
+        --input-background-color: #595959;
+        --input-border-radius: 6px;
+        --input-border-color: #cccccc8a;
+        --icon-search-color: #828282;
+        --icon-search-darker-color: #b1b1b1;
+        --padding-medium: 12px;
+        --header-background-fx-color: #e68d9cc8;
+        --header-background-f-lighter-color: #45161ec8;
+        --sidenav-backdrop-color: #3636368d;
+
+        --error-surface-color: #c48585;
+        --error-text-color: #b11b1b;
+
+        --user-badge-size: 50px;
+        --user-badge-gap: 12px;
+        --user-badge-padding: 12px;
+
+        --font-color: rgb(39, 39, 39);
+    }
+
 
 
     body {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        * {
+            color: var(--font-color);
+        }
     }
 }
 
