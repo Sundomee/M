@@ -11,7 +11,7 @@
   &__wrapper {
     display: flex;
     align-items: center;
-    height: 95%;
+    height: 100%;
     width: 100%;
 
     &--search {
@@ -60,8 +60,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      svg {}
 
       &:hover {
         background-color: rgb(43, 43, 43);

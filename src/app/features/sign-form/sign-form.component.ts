@@ -5,7 +5,6 @@ import { AuthService } from "../../services/auth.service";
 import { SignupBody } from "../../utils/files/types";
 import { passwordValidator } from "./validators/password-validator.directive";
 import { DlTooltipDirective } from "../../shared/components/dl-tooltip/dl-tooltip.directive";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'sign-form',
@@ -44,7 +43,6 @@ export class SignFormComponent {
     }
 
     async signup() {
-        debugger
         const signupBody: SignupBody = {
             email: this.sign_group.controls.email.value ?? '',
             password: this.sign_group.controls.password.value ?? '',

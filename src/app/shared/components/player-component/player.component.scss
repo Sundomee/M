@@ -1,4 +1,9 @@
-.player {
+:host {
     height: 100%;
+    width: 100%;
+}
+
+.player {
+    height: auto;
     width: 100%;
 }
