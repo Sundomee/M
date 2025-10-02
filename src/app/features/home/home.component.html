@@ -94,7 +94,7 @@
   </div>
 </section>
 
-<dl-sidenav [sidenavToggled]="sidenav_toggled()" (backdropClick)="onBackdropClick()"
+<dl-sidenav [sidenavToggled]="sidenav_toggled()" (backdropClick)="onBackdropClick()" (themeChanged)="onThemeChanged($event)"
   [style.width]="!sidenav_toggled() ? '0' : '100%'" />
 
 <!-- <div class="actions-wrapper">

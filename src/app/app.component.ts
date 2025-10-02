@@ -11,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent implements OnInit {
 
   ngOnInit() {
-    document.body.classList.add('light-theme');
+    document.body.classList.add('dark-theme');
   }
 
 }

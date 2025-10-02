@@ -1,0 +1,11 @@
+<div class="switcher" (click)="onPlayAnimation()"
+    [class.switcher--light]="currentTheme() === 'light'"
+    [class.switcher--dark]="currentTheme() === 'dark'"
+    >
+    <div class="switcher__toggle" 
+        [class.switcher__toggle--to-right]="currentTheme() === 'dark'"
+        [class.switcher__toggle--to-left]="currentTheme() === 'light'"
+        (animationend)="stopAnimation($event)"
+    >
+</div>
+</div>

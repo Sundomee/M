@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, input, OnInit, output, signal, WritableSignal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input, OnInit, output, OutputEmitterRef, signal, WritableSignal } from "@angular/core";
 import { UserBadgeComponent } from "../user-badge/user-badge.component";
+import { AppTheme, ThemeSwitcherComponent } from "../theme-switcher/theme-switcher.component";
 
 @Component({
     selector: 'dl-sidenav',
-    imports: [UserBadgeComponent],
+    imports: [UserBadgeComponent, ThemeSwitcherComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './sidenav.component.html',
     styleUrl: './sidenav.component.scss',
@@ -14,6 +15,7 @@ export class DlSidenavComponent implements OnInit {
     public readonly position = input<'left' | 'right'>('right');
     public readonly backdropClick = output();
     public readonly toggleComplete: WritableSignal<boolean> = signal(false);
+    public readonly themeChanged: OutputEmitterRef<AppTheme> = output();
     
     ngOnInit(): void {
         console.log(this.position());
@@ -22,5 +24,9 @@ export class DlSidenavComponent implements OnInit {
     onAnimationEnd(event: AnimationEvent) {
         const animationName = event.animationName.toLowerCase()
         if (animationName.includes('sidenav')) this.toggleComplete.set(animationName.includes('opensidenav'));    
+    }
+
+    onThemeChanged(event: AppTheme) {
+        this.themeChanged.emit(event)
     }
 }

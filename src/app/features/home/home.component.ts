@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
 import { DlSidenavComponent } from "../../shared/components/sidenav/sidenav.component";
 import { DlHeaderComponent } from "../../shared/components/header/header.component";
+import { ThemeService } from "../../services/theme.service";
+import { AppTheme } from "../../shared/components/theme-switcher/theme-switcher.component";
 
 @Component({
   selector: 'c-home',
@@ -34,7 +36,9 @@ export class Home implements OnInit {
   public readonly sidenav_toggled = signal<boolean>(false)
 
   public readonly tracks: WritableSignal<Track[]> = signal([]);
+  
   private readonly trackService: TrackService = inject(TrackService);
+  private readonly themeService: ThemeService = inject(ThemeService);
   private readonly router: Router = inject(Router);
 
   public readonly fakeArtists = [
@@ -124,5 +128,9 @@ export class Home implements OnInit {
 
   onBackdropClick() {
     this.sidenav_toggled.set(false)
+  }
+
+  onThemeChanged(theme: AppTheme) {
+    this.themeService.changeTheme(theme)
   }
 }
