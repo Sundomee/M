@@ -6,6 +6,7 @@
     user-select: none;
     border: 1px solid var(--slide-toggle-border-color);
     background-color: var(--slide-toggle-background-color);
+    cursor: pointer;
 
     &__toggle {
         height: 22px;

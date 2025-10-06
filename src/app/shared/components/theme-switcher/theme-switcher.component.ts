@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, output, OutputEmitterRef, signal, WritableSignal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, output, OutputEmitterRef, signal, WritableSignal } from "@angular/core";
+import { ThemeService } from "../../../services/theme.service";
 
 @Component({
     selector: 'dl-theme-switcher',
@@ -9,7 +10,9 @@ import { ChangeDetectionStrategy, Component, output, OutputEmitterRef, signal, W
 })
 export class ThemeSwitcherComponent {
 
-    public readonly currentTheme: WritableSignal<AppTheme> = signal('light')
+    private readonly themeService = inject(ThemeService)
+
+    public readonly currentTheme: WritableSignal<AppTheme> = signal(this.themeService.theme ?? 'dark')
     public readonly themeChanged: OutputEmitterRef<AppTheme> = output()
 
     onPlayAnimation() {
