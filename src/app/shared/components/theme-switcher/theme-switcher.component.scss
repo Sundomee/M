@@ -4,39 +4,32 @@
     border-radius: 24px;
     position: relative;
     user-select: none;
-
-    &--dark {
-        background-color: black;
-    }
-
-    &--light {
-        background-color: white;
-    }
+    border: 1px solid var(--slide-toggle-border-color);
+    background-color: var(--slide-toggle-background-color);
 
     &__toggle {
         height: 22px;
         width: 22px;
-        background-color: blue;
         border-radius: 50%;
         top: 50%;
         left: 0%;
         transform: translate(20%, -50%);
         transform-origin: top;
         position: absolute;
+        background-color: white;
+        border: 1px solid var(--slide-toggle-handle-border-color);
+        background-color: var(--slide-toggle-handle-color);
 
         &--to-left {
             animation: toggleLight 325ms ease-out forwards;
-            background-color: var(--font-color);
+
         }
 
         &--to-right {
             animation: toggleDark 325ms ease-out forwards;
-            background-color: var(--font-color);
         }
     }
 }
-
-.animate {}
 
 @keyframes toggleDark {
     0% {

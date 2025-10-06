@@ -85,6 +85,8 @@
 
     &__card {
       flex-basis: 12%;
+      display: flex;
+      justify-content: center;
 
       &--img-wrapper {
 

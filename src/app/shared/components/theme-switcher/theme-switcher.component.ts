@@ -10,7 +10,6 @@ import { ChangeDetectionStrategy, Component, output, OutputEmitterRef, signal, W
 export class ThemeSwitcherComponent {
 
     public readonly currentTheme: WritableSignal<AppTheme> = signal('light')
-
     public readonly themeChanged: OutputEmitterRef<AppTheme> = output()
 
     onPlayAnimation() {
