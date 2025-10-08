@@ -1,4 +1,19 @@
-<dl-header></dl-header>
 <div class="player">
+    <dl-header></dl-header>
+
+    <div class="track">
+        <div class="track__media-player">
+            <audio [src]="track()?.path" #audio></audio>
+            <div class="track__bot-wrapper">
+                <div class="track__progress-bar">
+                    <span class="track__handle"></span>
+                </div>
+                <div class="track__actions"></div>
+            </div>
+        </div>
+        
+        <button class="play-btn" (click)="playAudio()">Play</button>
+        {{track()?.path}}
+    </div>
     
 </div>

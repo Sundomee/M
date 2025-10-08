@@ -16,13 +16,13 @@
             </div>
             <div class="category__body">
               @for (item of fakeArtists; track $index) {
-              <div class="category__card">
-                <div class="category__card-wrapper">
+              <div class="card">
+                <div class="card__wrapper">
 
-                  <div class="category__card--img-wrapper">
+                  <div class="card__img-wrapper">
                     <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
                   </div>
-                  <div class="category__card--name">{{item.name}}</div>
+                  <div class="card__details">{{item.name}}</div>
                 </div>
               </div>
               }
@@ -33,14 +33,21 @@
               <span class="category__header--title">Hit del momento</span>
             </div>
             <div class="category__body">
-              @for (item of fakeArtists; track $index) {
-              <div class="category__card">
-                <div class="category__card-wrapper">
-
-                  <div class="category__card--img-wrapper">
+              @for (item of tracks(); track $index) {
+              <div class="card" (click)="navigateToTrack(item)">
+                <div class="card__wrapper">
+                  <div class="card__img-wrapper">
                     <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
                   </div>
-                  <div class="category__card--name">{{item.name}}</div>
+                  <div class="card__details">
+                    <div class="card__track-info">
+                      <span class="card__name">{{item.title}}</span>
+                      <span class="card__length">{{item.length / 60}}</span>
+                    </div>
+                    <div class="card__author">
+                      {{item.user.username}}
+                    </div>
+                  </div>
                 </div>
               </div>
               }
@@ -52,13 +59,12 @@
             </div>
             <div class="category__body">
               @for (item of fakeArtists; track $index) {
-              <div class="category__card">
-                <div class="category__card-wrapper">
-
-                  <div class="category__card--img-wrapper">
+              <div class="card">
+                <div class="card__wrapper">
+                  <div class="card__img-wrapper">
                     <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
                   </div>
-                  <div class="category__card--name">{{item.name}}</div>
+                  <div class="card__details">{{item.name}}</div>
                 </div>
               </div>
               }

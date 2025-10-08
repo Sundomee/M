@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, WritableSignal, inject, sig
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
-import { TrackService } from "../../core/track-service";
+import { TrackService } from "../../services/track.service";
 import { MatSliderModule } from "@angular/material/slider";
 import { Track } from "../../shared/models/track-model";
 import { Router } from "@angular/router";
@@ -119,7 +119,8 @@ export class Home implements OnInit {
   }
 
   navigateToTrack(track: Track) {
-    this.router.navigateByUrl(`/listen/${track._id}`)
+    this.trackService.setCurrentTrack = track;
+    this.router.navigateByUrl(`/track/${track._id}`)
   }
 
   toggleSidenav() {
