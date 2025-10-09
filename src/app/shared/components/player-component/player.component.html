@@ -6,7 +6,11 @@
             <audio [src]="track()?.path" #audio></audio>
             <div class="track__bot-wrapper">
                 <div class="track__progress-bar">
-                    <span class="track__handle"></span>
+                    <span class="track__handle" 
+                    [class.track__handle--animate]="canAnimate()" 
+                        [style.animationDuration.ms]="track().length"
+                        [style.animationPlayState]="canAnimate() ? 'running' : 'paused'"
+                    ></span>
                 </div>
                 <div class="track__actions"></div>
             </div>

@@ -17,6 +17,7 @@ export class PlayerComponent implements OnInit {
 
   public readonly audioSrc = viewChild<ElementRef<HTMLAudioElement>>('audio')
   public readonly track = signal<Track | null>(null);
+  public readonly canAnimate = signal<boolean>(false);
 
   private readonly trackService = inject(TrackService);
   private readonly route = inject(ActivatedRoute);
@@ -29,7 +30,6 @@ export class PlayerComponent implements OnInit {
       const track_id = this.route.snapshot.paramMap.get('trackId');
       if (track_id) {
         currTrack = (await this.trackService.getTrackById(track_id)).data;
-
       }
     }
 
@@ -39,16 +39,16 @@ export class PlayerComponent implements OnInit {
       this.track.set(currTrack);
     }
 
+    console.log(this.track());
   }
 
   playAudio() {
-
-    const isUndefined = (value: any): value is undefined => typeof value === 'undefined' 
-
+    
     if( this.audioSrc() ){
-      this.audioSrc().nativeElement.loop = true
       this.audioSrc().nativeElement.play();
+      this.canAnimate.set(true);
     }
+
   }
 }
 

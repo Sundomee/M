@@ -47,6 +47,21 @@
         left: 0;
         top: 50%;
         transform: translateY(-50%);
+
+        &--animate {
+            animation-name: handleMove;
+            animation-timing-function: linear;
+        }
+    }
+
+    @keyframes handleMove {
+        from {
+            left: 0%;
+        }
+
+        to {
+            left: 100%;
+        }
     }
 }
 
