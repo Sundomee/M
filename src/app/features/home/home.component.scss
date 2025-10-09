@@ -114,6 +114,14 @@
     width: 100%;
     padding: 0 24px;
   }
+
+  &__name {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 200px;
+  }
   
   &__track-info {
     display: flex;

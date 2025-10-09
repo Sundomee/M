@@ -1,8 +1,6 @@
 <section class="home">
   <div class="home__wrapper">
 
-    <dl-header (toggleSidenav)="sidenav_toggled.set(true)" />
-
     <div class="home__container">
       <div class="home__container-panel base-transparency">
         <div class="home__dx-sidenav-wrapper">
@@ -99,9 +97,6 @@
     </div>
   </div>
 </section>
-
-<dl-sidenav [sidenavToggled]="sidenav_toggled()" (backdropClick)="onBackdropClick()" (themeChanged)="onThemeChanged($event)"
-  [style.width]="!sidenav_toggled() ? '0' : '100%'" />
 
 <!-- <div class="actions-wrapper">
 

@@ -1,4 +1,7 @@
 <div class="page-wrapper">
+    <dl-header (toggleSidenav)="sidenavToggled.set(true)"></dl-header>
+    <dl-sidenav [sidenavToggled]="sidenavToggled()" (backdropClick)="onBackdropClick()"
+        (themeChanged)="onThemeChanged($event)" [style.width]="!sidenavToggled() ? '0' : '100%'" />
     <router-outlet />
 
 </div>
