@@ -23,5 +23,9 @@ export const routes: Routes = [
   {
     path: 'play',
     loadComponent: () => import('./shared/components/player-component/player.component').then((c) => c.PlayerComponent),
+  },
+  {
+    path: 'upload',
+    loadComponent: () => import('./features/views/track-uploader/track-uploader.component').then((c) => c.TrackUploaderComponent)
   }
 ];
