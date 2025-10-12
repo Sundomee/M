@@ -6,8 +6,9 @@
             <div class="track__bot-wrapper">
                 <div class="track__progress-bar">
                     <span class="track__handle" 
+                    (animationend)="animationEndController($event)"
                     [class.track__handle--animate]="canAnimate()" 
-                        [style.animationDuration.ms]="track().length"
+                        [style.animationDuration.ms]="track().duration"
                         [style.animationPlayState]="canAnimate() ? 'running' : 'paused'"
                     ></span>
                 </div>

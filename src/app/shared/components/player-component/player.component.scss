@@ -40,9 +40,9 @@
 
     &__handle {
         position: absolute;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
+        width: 0px;
+        height: 8px;
+        // border-radius: 50%;
         background-color: burlywood;
         left: 0;
         top: 50%;
@@ -56,11 +56,11 @@
 
     @keyframes handleMove {
         from {
-            left: 0%;
+            width: 0%;
         }
 
         to {
-            left: 100%;
+            width: 100%;
         }
     }
 }

@@ -36,6 +36,10 @@ export class PlayerComponent implements OnInit {
       // currTrack.path = 'http://localhost:3000/public' + currTrack.path;
       currTrack.path = `${BUCKET_URL}/tracce/${currTrack.title}`;
       currTrack.imagePath = `${BUCKET_URL}/img/${currTrack._id}/${currTrack.imageId}`
+
+      const audio = new Audio(currTrack.path);
+
+    
       this.track.set(currTrack);
     }
 
@@ -43,10 +47,16 @@ export class PlayerComponent implements OnInit {
   }
 
   playAudio() {
-    
     if( this.audioSrc() ){
       this.audioSrc().nativeElement.play();
       this.canAnimate.set(true);
+    }
+  }
+
+  animationEndController(event: AnimationEvent) {
+
+    if (event.animationName.includes('handleMove')) {
+      this.canAnimate.set(false)
     }
 
   }

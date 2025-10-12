@@ -19,11 +19,13 @@ export class TrackUploaderComponent {
 
     public readonly titleControl = new FormControl<string>('', Validators.required);
     public readonly descriptionControl = new FormControl<string>('');
-    public audioFile: File;
-    public imageFile: File;
+
+
+    private audioFile: File;
+    private imageFile: File;
+    private duration: number;
 
     private readonly formData = new FormData();
-
     private readonly trackService = inject(TrackService);
 
     dropFile(event: DragEvent) {
@@ -89,7 +91,7 @@ export class TrackUploaderComponent {
 
     }
 
-    readAudio(file: File) {
+   async readAudio(file: File) {
         this.audioFile = file;
         const reader = new FileReader();
 
@@ -107,7 +109,13 @@ export class TrackUploaderComponent {
 
         }
 
-        reader.readAsDataURL(file)
+        reader.readAsDataURL(file);
+
+       const duration = await this.getAudioDuration(file);
+
+       if (duration) {
+        this.duration = duration
+       }
     }
 
     play() {
@@ -130,6 +138,7 @@ export class TrackUploaderComponent {
                 title,
                 description,
                 size,
+                duration: (this.duration * 1000), // Da secondi in float 123.456 a ms 123456 
             }
         ))
 
@@ -137,4 +146,22 @@ export class TrackUploaderComponent {
         console.log(res);
 
     }
+
+    async getAudioDuration(file: File): Promise<number> {
+        return new Promise((resolve, reject) => {
+            const url = URL.createObjectURL(file);      // crea un URL temporaneo per il file
+            const audio = new Audio(url);               // crea un elemento audio invisibile
+
+            audio.addEventListener('loadedmetadata', () => {
+                resolve(audio.duration);                  // durata in secondi (float)
+                URL.revokeObjectURL(url);                 // pulizia memoria
+            });
+
+            audio.addEventListener('error', (err) => {
+                reject(err);
+                URL.revokeObjectURL(url);
+            });
+        });
+    }
+
 }

@@ -9,7 +9,7 @@ export interface APIResponse<T> {
 export interface Track {
     title: string;
     size: number;
-    length: number;
+    duration: number;
     path: string;
     imagePath: string;
     _id: string;
