@@ -1,3 +1,118 @@
 :host {
     height: 100%;
 }
+
+.uploader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    &__info {
+        width: 50%;
+        height: 75%;
+        background-color: var(--contrast);
+        padding: 12px;
+        border-radius: 8px;
+        background-color: var(--lighter-application-main-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 64px;
+    }
+
+    &__image {
+        color: var(--icon-search-color);
+        width: 45%;
+        height: 55%;
+        background-size: cover;
+        border: 1px dashed var(--icon-search-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 28px;
+        cursor: pointer;
+        background-position: center;
+
+        &--chosen {
+            border: none;
+        }
+
+        & span {
+            text-align: center;
+        }
+
+        input {
+            display: none;
+        }
+    }
+
+    &__track {
+        height: 20%;
+        width: 45%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        border: 1px dashed var(--icon-search-color);
+        cursor: pointer;
+
+        input {
+            display: none;
+        }
+    }
+
+    &__details {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+    &__title, &__description {
+        display: flex;
+        width: 60%;
+        max-width: 60%;
+        flex-direction: column;
+
+        .base-input {
+            border-radius: 2px;
+            height: 48px;
+            font-size: 24px;
+            color: var(--font-color);
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px !important;
+            font-size: 16px !important;
+
+        }
+    }
+
+    &__button {
+        display: flex;
+        gap: 4px;
+        padding: 6px;
+        outline: none;
+        border: var(--input-border-color);
+        background-color: var(--contrast);
+        border-radius: 4px;
+        justify-content: center;
+        width: 12%;
+        cursor: pointer;
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

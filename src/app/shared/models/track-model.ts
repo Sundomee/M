@@ -11,7 +11,16 @@ export interface Track {
     size: number;
     length: number;
     path: string;
+    imagePath: string;
     _id: string;
     user_id: string;
     user: User;
+    imageId: string;
+}
+
+export interface UploadTrackRequestBody {
+    title: string;
+    size: number;
+    description?: string;
+    track: FormData;
 }

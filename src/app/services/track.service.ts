@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { lastValueFrom } from "rxjs";
-import { APIResponse, Track } from "../shared/models/track-model";
+import { APIResponse, Track, UploadTrackRequestBody } from "../shared/models/track-model";
 import { HOST } from "../utils/files/constants";
 
 @Injectable({ providedIn: 'root' })
@@ -24,8 +24,6 @@ export class TrackService {
         return lastValueFrom(this.httpClient.post(`${this.host}/tracks`, track))
     }
 
-
-    
     public set setCurrentTrack(track: Track) {
         this._currentTrack = track;
     }

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, signal, viewChild } from "@angular/core";
-import { DlHeaderComponent } from "../header/header.component";
 import { TrackService } from "../../../services/track.service";
 import { Track } from "../../models/track-model";
 import { ActivatedRoute } from "@angular/router";
@@ -7,7 +6,7 @@ import { BUCKET_URL } from "../../../utils/files/constants";
 
 @Component({
   selector: "player-component",
-  imports: [DlHeaderComponent],
+  imports: [],
   standalone: true,
   templateUrl: "./player.component.html",
   styleUrl: "./player.component.scss",
@@ -35,7 +34,8 @@ export class PlayerComponent implements OnInit {
 
     if( currTrack ) {
       // currTrack.path = 'http://localhost:3000/public' + currTrack.path;
-      currTrack.path = `${BUCKET_URL}/${currTrack.title}`;
+      currTrack.path = `${BUCKET_URL}/tracce/${currTrack.title}`;
+      currTrack.imagePath = `${BUCKET_URL}/img/${currTrack._id}/${currTrack.imageId}`
       this.track.set(currTrack);
     }
 
