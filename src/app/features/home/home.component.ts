@@ -9,10 +9,9 @@ import { Router } from "@angular/router";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
-import { DlSidenavComponent } from "../../shared/components/sidenav/sidenav.component";
-import { DlHeaderComponent } from "../../shared/components/header/header.component";
 import { ThemeService } from "../../services/theme.service";
 import { AppTheme } from "../../shared/components/theme-switcher/theme-switcher.component";
+import { BUCKET_URL } from "../../utils/files/constants";
 
 @Component({
   selector: 'c-home',
@@ -24,8 +23,6 @@ import { AppTheme } from "../../shared/components/theme-switcher/theme-switcher.
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
-    DlSidenavComponent,
-    DlHeaderComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -113,6 +110,9 @@ export class Home implements OnInit {
   async ngOnInit(): Promise<void> {
 
     const tracks = (await this.trackService.getTracks()).data;
+    for (const track of tracks) {
+      track.imagePath =  `${BUCKET_URL}/img/${track._id}/${track.imageId}`
+    }
     this.tracks.set(tracks);
 
     console.log(this.tracks());

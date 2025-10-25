@@ -35,7 +35,7 @@
               <div class="card" (click)="navigateToTrack(item)">
                 <div class="card__wrapper">
                   <div class="card__img-wrapper">
-                    <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
+                    <span [style.backgroundImage]="`url(${item.imagePath})`"></span>
                   </div>
                   <div class="card__details">
                     <div class="card__track-info">
