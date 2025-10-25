@@ -3,10 +3,11 @@ import { TrackService } from "../../../services/track.service";
 import { Track } from "../../models/track-model";
 import { ActivatedRoute } from "@angular/router";
 import { BUCKET_URL } from "../../../utils/files/constants";
+import { NgTemplateOutlet } from "@angular/common";
 
 @Component({
   selector: "player-component",
-  imports: [],
+  imports: [NgTemplateOutlet],
   standalone: true,
   templateUrl: "./player.component.html",
   styleUrl: "./player.component.scss",
@@ -37,9 +38,6 @@ export class PlayerComponent implements OnInit {
       currTrack.path = `${BUCKET_URL}/tracce/${currTrack.title}`;
       currTrack.imagePath = `${BUCKET_URL}/img/${currTrack._id}/${currTrack.imageId}`
 
-      const audio = new Audio(currTrack.path);
-
-    
       this.track.set(currTrack);
     }
 

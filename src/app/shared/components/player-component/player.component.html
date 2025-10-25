@@ -1,23 +1,39 @@
 <div class="player">
     <div class="track">
-        <div class="track__media-player" 
-            [style.backgroundImage]="`url(${track().imagePath})`">
+        <div class="track__media-player" [style.backgroundImage]="`url(${track().imagePath})`">
             <audio [src]="track().path" #audio></audio>
             <div class="track__bot-wrapper">
                 <div class="track__progress-bar">
-                    <span class="track__handle" 
-                    (animationend)="animationEndController($event)"
-                    [class.track__handle--animate]="canAnimate()" 
-                        [style.animationDuration.ms]="track().duration"
-                        [style.animationPlayState]="canAnimate() ? 'running' : 'paused'"
-                    ></span>
+                    <span class="track__handle" (animationend)="animationEndController($event)"
+                        [class.track__handle--animate]="canAnimate()" [style.animationDuration.ms]="track().duration"
+                        [style.animationPlayState]="canAnimate() ? 'running' : 'paused'"></span>
                 </div>
-                <div class="track__actions"></div>
+                <div class="track__actions actions">
+                    <div class="actions__left">
+
+                        <button class="base-icon-button">
+                            <ng-container [ngTemplateOutlet]="playSvg"></ng-container>
+                        </button>
+
+                    </div>
+                    <div class="actions__right">
+
+                    </div>
+                </div>
             </div>
         </div>
-        
+
         <button class="play-btn" (click)="playAudio()">Play</button>
         {{track()?.path}}
     </div>
-    
+
 </div>
+
+<ng-template #playSvg>
+    <svg width="32px" height="32px" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M8.52814 5.11833C8.8533 4.94431 9.24784 4.96338 9.5547 5.16795L18.5547 11.168C18.8329 11.3534 19 11.6656 19 12C19 12.3344 18.8329 12.6466 18.5547 12.8321L9.5547 18.8321C9.24784 19.0366 8.8533 19.0557 8.52814 18.8817C8.20298 18.7077 8 18.3688 8 18V6C8 5.63121 8.20298 5.29235 8.52814 5.11833ZM10 7.86852V16.1315L16.1972 12L10 7.86852Z">
+        </path>
+    </svg>
+</ng-template>
