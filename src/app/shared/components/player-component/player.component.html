@@ -1,18 +1,21 @@
 <div class="player">
     <div class="track">
         <div class="track__media-player" [style.backgroundImage]="`url(${track().imagePath})`">
-            <audio [src]="track().path" #audio></audio>
+            <audio [src]="track().path" #audio ></audio>
             <div class="track__bot-wrapper">
                 <div class="track__progress-bar">
-                    <span class="track__handle" (animationend)="animationEndController($event)"
-                        [class.track__handle--animate]="canAnimate()" [style.animationDuration.ms]="track().duration"
-                        [style.animationPlayState]="canAnimate() ? 'running' : 'paused'"></span>
-                </div>
+                    <input type="range" [value]="currentTrackTime()" step="0.01" [max]="audioSrc().nativeElement.duration" (input)="thumbMove($event)" (mouseup)="audioSrc().nativeElement.play()">
+                </div>  
                 <div class="track__actions actions">
                     <div class="actions__left">
 
-                        <button class="base-icon-button">
-                            <ng-container [ngTemplateOutlet]="playSvg"></ng-container>
+                        <button class="base-icon-button" (click)="trackPlaying() ? pauseTrack() : playTrack()">
+                            @if (trackPlaying()) {
+                                <i class="fa-solid fa-pause"></i>
+                            } @else {
+                                <i class="fa-solid fa-play"></i>
+                            }
+                            
                         </button>
 
                     </div>
@@ -23,8 +26,6 @@
             </div>
         </div>
 
-        <button class="play-btn" (click)="playAudio()">Play</button>
-        {{track()?.path}}
     </div>
 
 </div>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, signal, viewChild } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, effect, ElementRef, inject, OnInit, signal, viewChild } from "@angular/core";
 import { TrackService } from "../../../services/track.service";
 import { Track } from "../../models/track-model";
 import { ActivatedRoute } from "@angular/router";
@@ -15,9 +15,11 @@ import { NgTemplateOutlet } from "@angular/common";
 })
 export class PlayerComponent implements OnInit {
 
-  public readonly audioSrc = viewChild<ElementRef<HTMLAudioElement>>('audio')
+  public readonly audioSrc = viewChild<ElementRef<HTMLAudioElement>>('audio');
+
   public readonly track = signal<Track | null>(null);
-  public readonly canAnimate = signal<boolean>(false);
+  public readonly currentTrackTime = signal<number>(0);
+  public readonly trackPlaying = signal<boolean>(false);
 
   private readonly trackService = inject(TrackService);
   private readonly route = inject(ActivatedRoute);
@@ -33,31 +35,45 @@ export class PlayerComponent implements OnInit {
       }
     }
 
-    if( currTrack ) {
-      // currTrack.path = 'http://localhost:3000/public' + currTrack.path;
+    if (currTrack) {
+     
       currTrack.path = `${BUCKET_URL}/tracce/${currTrack.title}`;
       currTrack.imagePath = `${BUCKET_URL}/img/${currTrack._id}/${currTrack.imageId}`
 
       this.track.set(currTrack);
     }
-
-    console.log(this.track());
   }
 
-  playAudio() {
-    if( this.audioSrc() ){
+  playTrack() {
+    if (this.audioSrc()) {
+      this.audioSrc().nativeElement.volume = 1;
+
+      this.audioSrc().nativeElement.ontimeupdate = (event) => {
+        const animate = () => {
+          this.currentTrackTime.set((event.target as HTMLAudioElement).currentTime);
+          requestAnimationFrame(animate);
+        };
+        animate();
+      }
+
       this.audioSrc().nativeElement.play();
-      this.canAnimate.set(true);
+      this.audioSrc().nativeElement.loop = true;
+
+      this.trackPlaying.set(true)
     }
   }
 
-  animationEndController(event: AnimationEvent) {
+  pauseTrack() {
+    this.audioSrc().nativeElement.pause();
+    this.trackPlaying.set(false)
+  }
 
-    if (event.animationName.includes('handleMove')) {
-      this.canAnimate.set(false)
-    }
+  thumbMove(event: Event) {
+    this.audioSrc().nativeElement.pause();
+    this.audioSrc().nativeElement.volume = 1;
 
+    const newTime = (event.target as any).value
+    this.audioSrc().nativeElement.currentTime = newTime;
+    this.trackPlaying.set(true);
   }
 }
-
-
