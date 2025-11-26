@@ -33,7 +33,7 @@ export class Home implements OnInit {
   public readonly sidenav_toggled = signal<boolean>(false)
 
   public readonly tracks: WritableSignal<Track[]> = signal([]);
-  
+
   private readonly trackService: TrackService = inject(TrackService);
   private readonly themeService: ThemeService = inject(ThemeService);
   private readonly router: Router = inject(Router);
@@ -70,7 +70,7 @@ export class Home implements OnInit {
     {
       name: 'ciccio',
       img: '../../utils/images/papers/bg-img-1.jpg'
-    }, 
+    },
     {
       name: 'ciccio',
       img: '../../utils/images/papers/bg-img-1.jpg'
@@ -111,7 +111,7 @@ export class Home implements OnInit {
 
     const tracks = (await this.trackService.getTracks()).data;
     for (const track of tracks) {
-      track.imagePath =  `${BUCKET_URL}/img/${track._id}/${track.imageId}`
+      track.imagePath = `${BUCKET_URL}/img/${track._id}/${track.imageId}`
     }
     this.tracks.set(tracks);
 
@@ -121,6 +121,10 @@ export class Home implements OnInit {
   navigateToTrack(track: Track) {
     this.trackService.setCurrentTrack = track;
     this.router.navigateByUrl(`/track/${track._id}`)
+  }
+
+  navigateToUpload() {
+    this.router.navigateByUrl('/upload')
   }
 
   toggleSidenav() {

@@ -138,7 +138,7 @@ export class TrackUploaderComponent {
                 title,
                 description,
                 size,
-                duration: (this.duration * 1000), // Da secondi in float 123.456 a ms 123456 
+                duration: (this.duration), // Da secondi in float 123.456 a ms 123456 
             }
         ))
 

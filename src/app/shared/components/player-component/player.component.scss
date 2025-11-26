@@ -13,12 +13,11 @@
 }
 
 .track {
-    
+
     width: 95%;
     height: 95%;
     background-color: black;
     border-radius: 8px;
-    overflow: hidden;
 
     &__media-player {
         width: 100%;
@@ -39,33 +38,6 @@
         flex-direction: column;
 
     }
-
-    &__progress-bar {
-        height: 8px;
-        width: 100%;
-        position: relative;
-        display: flex;
-        align-items: center;
-
-        &>input {
-            width: 100%;
-            accent-color: #4caf50;
-            transition: all 200ms ease;
-        }
-    }
-
-    &__handle {
-        width: 0px;
-        height: 8px;
-        background-color: burlywood;
-        position: relative;
-
-        &--animate {
-            animation-name: handleMove;
-            animation-timing-function: linear;
-        }
-    }
-
 }
 
 .actions {
@@ -82,4 +54,53 @@
 
 dl-header {
     width: 100%;
+}
+
+.progress-bar {
+    height: 8px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+
+    &__runnable {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(138, 138, 138, 0.534);
+        cursor: pointer;
+        pointer-events: all;
+        z-index: 1;
+
+    }
+
+    &__loaded {
+        height: 8px;
+        position: absolute;
+        left: 0;
+        background-color: rgba(184, 184, 184, 0.534);
+        z-index: 2;
+
+    }
+
+    &__runned {
+        width: 0;
+        height: 100%;
+        background-color: red;
+        position: relative;
+        z-index: 3;
+    }
+
+    &__handle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        pointer-events: all;
+        z-index: 3;
+    }
 }

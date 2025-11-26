@@ -2,12 +2,12 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 import { APIResponse, Track, UploadTrackRequestBody } from "../shared/models/track-model";
-import { HOST } from "../utils/files/constants";
+import { API_HOST } from "../utils/files/constants";
 
 @Injectable({ providedIn: 'root' })
 export class TrackService {
 
-    private host = HOST
+    private host = API_HOST
     private httpClient = inject(HttpClient)
 
     private _currentTrack: Track | null = null

@@ -3,160 +3,112 @@
 
     <div class="home__container">
       <div class="home__container-panel base-transparency">
-        <div class="home__dx-sidenav-wrapper">
-          <div class="home__dx-sidenav"></div>
+        <div class="home__sx-sidenav-wrapper">
+          <div class="home__sx-sidenav">
+            <ul class="list">
+              <li class="list__upload">
+                <button class="list__upload-button" (click)="navigateToUpload()">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <span>Carica una traccia</span>
+                </button>
+              </li>
+              <li class="list__upload">
+                <button class="list__upload-button">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <span>Carica un album</span>
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <section class="main">
+
+          <!-- Category: Artisti Popolari -->
           <div class="category">
             <div class="category__header">
-              <span class="category__header--title">Artisti popolari</span>
+              <h2 class="category__header--title">Artisti popolari</h2>
             </div>
             <div class="category__body">
               @for (item of fakeArtists; track $index) {
-              <div class="card">
+              <div class="card artist-card">
                 <div class="card__wrapper">
-
                   <div class="card__img-wrapper">
-                    <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
+                    <img alt="{{item.name}}" src="../../../../public/assets/images/papers/bg-img2.png">
+                    <div class="card__overlay">
+                      <button mat-icon-button class="play-button">
+                        <mat-icon>play_arrow</mat-icon>
+                      </button>
+                    </div>
                   </div>
-                  <div class="card__details">{{item.name}}</div>
+                  <div class="card__details">
+                    <span class="card__name">{{item.name}}</span>
+                    <span class="card__subtitle">Artista</span>
+                  </div>
                 </div>
               </div>
               }
             </div>
           </div>
+
+          <!-- Category: Hit del momento -->
           <div class="category">
             <div class="category__header">
-              <span class="category__header--title">Hit del momento</span>
+              <h2 class="category__header--title">Hit del momento</h2>
             </div>
             <div class="category__body">
               @for (item of tracks(); track $index) {
-              <div class="card" (click)="navigateToTrack(item)">
+              <div class="card track-card" (click)="navigateToTrack(item)">
                 <div class="card__wrapper">
                   <div class="card__img-wrapper">
-                    <span [style.backgroundImage]="`url(${item.imagePath})`"></span>
+                    <div class="card__img" [style.backgroundImage]="`url(${item.imagePath})`"></div>
+                    <div class="card__overlay">
+                      <button mat-icon-button class="play-button">
+                        <mat-icon>play_arrow</mat-icon>
+                      </button>
+                    </div>
                   </div>
                   <div class="card__details">
-                    <div class="card__track-info">
-                      <span class="card__name">{{item.title}}</span>
-                      <span class="card__length">{{item.duration / 60}}</span>
-                    </div>
-                    <div class="card__author">
-                      {{item.user.username}}
-                    </div>
+                    <span class="card__name">{{item.title}}</span>
+                    <span class="card__subtitle">{{item.user.username}}</span>
                   </div>
                 </div>
               </div>
               }
             </div>
           </div>
+
+          <!-- Category: Albums -->
           <div class="category">
             <div class="category__header">
-              <span class="category__header--title">Albums</span>
+              <h2 class="category__header--title">Albums</h2>
             </div>
             <div class="category__body">
               @for (item of fakeArtists; track $index) {
-              <div class="card">
+              <div class="card album-card">
                 <div class="card__wrapper">
                   <div class="card__img-wrapper">
-                    <img alt="" src="../../../../public/assets/images/papers/bg-img2.png">
+                    <img alt="{{item.name}}" src="../../../../public/assets/images/papers/bg-img2.png">
+                    <div class="card__overlay">
+                      <button mat-icon-button class="play-button">
+                        <mat-icon>play_arrow</mat-icon>
+                      </button>
+                    </div>
                   </div>
-                  <div class="card__details">{{item.name}}</div>
+                  <div class="card__details">
+                    <span class="card__name">{{item.name}}</span>
+                    <span class="card__subtitle">Album</span>
+                  </div>
                 </div>
               </div>
               }
             </div>
           </div>
+
         </section>
 
-        <!-- 
-        <section class="tracks-section">
-          <div class="tracks-sections__container">
-            @for (track of tracks(); let index = $index; track index) {
-            <div class="track">
-              <div class="track__title">
-                {{ track.title }}
-              </div>
-
-              <div class="track__image-wrap">
-                <img src="./src/app/utils/images/papers/guts-2k.jpg" class="track__image" alt="" >
-              </div>
-
-              <div class="track__actions">
-                <button (click)="navigateToTrack(track)">play</button>
-              </div>
-
-            </div>
-
-            }
-          </div>
-        </section> -->
       </div>
 
     </div>
   </div>
 </section>
-
-<!-- <div class="actions-wrapper">
-
-            <div class="thumbnail">
-                <img src="../../../../public/assets/thumbnails/thumbnail_ph.jpg" [alt]="">
-            </div>
-
-            <div class="track-loader">
-                <label class="track-loader__label" for="player">Scegli una traccia</label>
-                <input type="file" id="player" class="track-loader__input" (input)="getFileData($event)"
-                    accept="audio/mp3">
-                <audio #audioSource class="track-loader__audioSrc"></audio>
-
-                <div class="track-loader__action-btns-wrapper">
-                    <button class="track-loader__action-btn track-loader__play-btn" mat-icon-button
-                        (click)="  isTrackOnGoing() ? pauseTrack() : playTrack()">
-                        @if(isTrackOnGoing()) {
-                        <mat-icon>pause</mat-icon>
-                        } @else {
-                        <mat-icon>play_arrow</mat-icon>
-                        }
-                    </button>
-
-                    <div class="track-loader__volume-wrapper">
-                        <mat-icon>volume_up</mat-icon>
-                        <mat-slider [discrete]="true" [max]="100" [min]="0" [showTickMarks]="true">
-                            <input matSliderThumb [(value)]="this.trackVolume">
-                        </mat-slider>
-
-                    </div>
-
-                </div>
-            </div>
-            <mat-progress-bar [bufferValue]="bufferTotal()" [value]="currentBuffer()"></mat-progress-bar>
-        </div>
-
-        <div class="tracks">
-
-            <div class="tracks__tracks-wrapper">
-                @for (t of tracks(); track $index) {
-                <div class="tracks__track">
-                    <div class="tracks__title">{{t.title}}</div>
-                    <div class="tracks__play">
-                        <button mat-icon-button (click)="playBotTrack(audioSourceBot)">
-                            <mat-icon>play_arrow</mat-icon>
-                        </button>
-                        <audio #audioSourceBot [src]="t.path" class="track-loader__audioSrc"></audio>
-
-                    </div>
-                </div>
-                }
-            </div>
-        </div> -->
-
-<!-- <div class="button_upload">
-            <button mat-icon-button (click)="input.click()">
-                <mat-icon>upload</mat-icon>
-            </button>
-        </div>
-        <form enctype="multipart/form-data">
-            <input type="file" name="track" #input (input)="uploadTrack($event)" style="display: none;">
-
-        </form> -->

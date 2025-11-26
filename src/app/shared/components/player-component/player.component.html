@@ -1,21 +1,29 @@
 <div class="player">
     <div class="track">
-        <div class="track__media-player" [style.backgroundImage]="`url(${track().imagePath})`">
-            <audio [src]="track().path" #audio ></audio>
+        <div class="track__media-player" [style.backgroundImage]="`url(${track()?.imagePath})`">
+            <audio [src]="audioSource()" #audio></audio>
             <div class="track__bot-wrapper">
-                <div class="track__progress-bar">
-                    <input type="range" [value]="currentTrackTime()" step="0.01" [max]="audioSrc().nativeElement.duration" (input)="thumbMove($event)" (mouseup)="audioSrc().nativeElement.play()">
-                </div>  
+                <div class="progress-bar">
+                    <div class="progress-bar__runnable" #runnable (click)="newTrackTime($event)">
+                        <div class="progress-bar__loaded" [style.width.%]="chunkLoadedPerc()"></div>
+                        <div class="progress-bar__runned" #runned inert></div>
+                        <div class="progress-bar__handle" #handle (mousedown)="onHandleDown($event)"></div>
+                    </div>
+                </div>
                 <div class="track__actions actions">
                     <div class="actions__left">
 
-                        <button class="base-icon-button" (click)="trackPlaying() ? pauseTrack() : playTrack()">
+                        <button class="base-icon-button" (click)="trackPlaying() ? pauseTrack() : playTrack()"
+                            (focus)="trackState.blur()" #trackState>
                             @if (trackPlaying()) {
-                                <i class="fa-solid fa-pause"></i>
+                            <i class="fa-solid fa-pause"></i>
                             } @else {
-                                <i class="fa-solid fa-play"></i>
+                            <i class="fa-solid fa-play"></i>
                             }
-                            
+                        </button>
+
+                        <button class="base-icon-button">
+                            <i class="fa-solid fa-volume-high"></i>
                         </button>
 
                     </div>
