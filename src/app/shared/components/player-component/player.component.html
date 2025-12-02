@@ -16,9 +16,9 @@
                         <button class="base-icon-button" (click)="trackPlaying() ? pauseTrack() : playTrack()"
                             (focus)="trackState.blur()" #trackState>
                             @if (trackPlaying()) {
-                            <i class="fa-solid fa-pause"></i>
+                              <i class="fa-solid fa-pause"></i>
                             } @else {
-                            <i class="fa-solid fa-play"></i>
+                              <i class="fa-solid fa-play"></i>
                             }
                         </button>
 

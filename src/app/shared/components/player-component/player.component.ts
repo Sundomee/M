@@ -105,12 +105,12 @@ export class PlayerComponent implements OnInit {
     }
   }
 
-  playTrack() {
+  async playTrack() {
     if (this.audioSrc()) {
       this.audioSrc().nativeElement.volume = .3;
 
       if (this.audioSrc().nativeElement.ended) {
-        this.audioSrc().nativeElement.play();
+        await this.audioSrc().nativeElement.play();
       }
 
       this.audioSrc().nativeElement.ontimeupdate = (event) => {
@@ -121,7 +121,7 @@ export class PlayerComponent implements OnInit {
         animate();
       }
 
-      this.audioSrc().nativeElement.play();
+      await this.audioSrc().nativeElement.play();
       this.audioSrc().nativeElement.loop = true;
 
       this.trackPlaying.set(true)
@@ -137,16 +137,15 @@ export class PlayerComponent implements OnInit {
     this.audioSrc().nativeElement.pause();
     this.audioSrc().nativeElement.volume = 1;
 
-    const newTime = (event.target as any).value
-    this.audioSrc().nativeElement.currentTime = newTime;
+    this.audioSrc().nativeElement.currentTime = (event.target as any).value;
     this.trackPlaying.set(true);
   }
 
   newTrackTime(event: MouseEvent) {
     const clickX = event.offsetX;
     const barWidth = this.runnable().nativeElement.offsetWidth;
-    const newTime = (clickX / barWidth) * this.audioSrc().nativeElement.duration;
-    this.audioSrc().nativeElement.currentTime = newTime;
+
+    this.audioSrc().nativeElement.currentTime = (clickX / barWidth) * this.audioSrc().nativeElement.duration;
   }
 
   onHandleDown(event: MouseEvent) {
@@ -173,9 +172,8 @@ export class PlayerComponent implements OnInit {
       const progress = (limitedX / this.barWidth) * 100;
       this.handle().nativeElement.style.left = `${progress}%`;
       this.runned().nativeElement.style.width = `${progress}%`;
-
-      const newTime = (progress / 100) * this.audioSrc().nativeElement.duration;
-      this.audioSrc().nativeElement.currentTime = newTime;
+      
+      this.audioSrc().nativeElement.currentTime = (progress / 100) * this.audioSrc().nativeElement.duration;
     }
   };
 

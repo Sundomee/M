@@ -40,7 +40,7 @@ export class TrackUploaderComponent {
         this.readImage(fileInfo);
     }
 
-    dropTrack(event: DragEvent) {
+    async dropTrack(event: DragEvent) {
         event.preventDefault();
         // Prendiamo il file
         const fileInfo = event.dataTransfer.files.item(0);
@@ -48,7 +48,7 @@ export class TrackUploaderComponent {
         // Controlliamo che sia un audio
         if (!fileInfo.type.includes('audio')) return
 
-        this.readAudio(fileInfo)
+        await this.readAudio(fileInfo)
 
     }
 
@@ -62,14 +62,14 @@ export class TrackUploaderComponent {
         this.readImage(fileInfo);
     }
 
-    audioSelected(event: Event) {
+    async audioSelected(event: Event) {
         const fileInfo = (event.target as HTMLInputElement).files.item(0);
 
         if (!fileInfo.type.includes('audio')) {
             return;
         }
 
-        this.readAudio(fileInfo);
+        await this.readAudio(fileInfo);
     }
 
     readImage(file: File) {
